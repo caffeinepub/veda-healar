@@ -1,30 +1,62 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "Vedahealer booking and information website with AI chatbot assistant",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Chatbot avatar icon for Vedu with spiritual/Vedic theme (vedu-avatar.dim_64x64.png)",
   "existing_features": [
     {
-      "id": "feature-update-the-instagram-social-media-link-in-the-footer-component-to-use-the-url-https-www-instagram-com-vedahealar",
-      "title": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
+      "id": "feature-create-a-chatbot-ui-component-named-vedu-with-a-floating-chat-bubble-icon-positioned-in-the-bottom-left-corner-opposite-the-whatsapp-button-the-icon-should-display-when-collapsed-and-expand-into-a-chat-interface-when-clicked",
+      "title": "Create a chatbot UI component named 'Vedu' with a floating chat bubble icon positioned in the bottom-left corner (opposite the WhatsApp button). The icon should display when collapsed and expand into a chat interface when clicked.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-instagram-social-media-link-in-the-contact-page-to-use-the-url-https-www-instagram-com-vedahealar",
-      "title": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+      "id": "feature-implement-chat-interface-with-message-history-display-user-input-field-and-send-button-messages-should-display-with-timestamps-and-differentiate-between-user-messages-and-vedu-s-responses-using-distinct-styling",
+      "title": "Implement chat interface with message history display, user input field, and send button. Messages should display with timestamps and differentiate between user messages and Vedu's responses using distinct styling.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-implement-appointment-booking-assistance-where-vedu-can-guide-users-through-the-booking-process-by-collecting-their-name-email-phone-number-preferred-date-time-and-service-selection-through-conversational-interactions-when-complete-trigger-the-same-booking-submission-to-the-google-apps-script-endpoint-used-by-bookingform",
+      "title": "Implement appointment booking assistance where Vedu can guide users through the booking process by collecting their name, email, phone number, preferred date/time, and service selection through conversational interactions. When complete, trigger the same booking submission to the Google Apps Script endpoint used by BookingForm.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-greeting-message-from-vedu-when-chat-is-first-opened-introducing-itself-and-offering-assistance-with-learning-about-vedahealar-services-or-booking-an-appointment",
+      "title": "Add greeting message from Vedu when chat is first opened, introducing itself and offering assistance with learning about Vedahealar services or booking an appointment.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
-  "projectName": "Update Instagram social media link",
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add AI chatbot assistant 'Vedu' to help users learn about Vedahealer and book appointments",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Create backend function to handle chat messages and generate contextual responses about Vedahealar services (numerology, name correction, lucky numbers, reiki healing, business name analysis). Include information about the consultation booking process and pricing.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Vedahealer",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

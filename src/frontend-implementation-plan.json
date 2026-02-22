@@ -1,35 +1,99 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update Instagram social media link",
+  "title": "Add AI chatbot assistant 'Vedu' for user assistance and appointment booking",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
+      "summary": "Create a chatbot UI component named 'Vedu' with a floating chat bubble icon positioned in the bottom-left corner (opposite the WhatsApp button). The icon should display when collapsed and expand into a chat interface when clicked.",
       "acceptanceCriteria": [
-        "The Instagram icon in the Footer links to https://www.instagram.com/vedahealar/",
-        "The link opens in a new tab with appropriate security attributes"
+        "Chat bubble icon appears in bottom-left corner with consistent styling to match the application theme",
+        "Clicking the icon opens a chat interface overlay",
+        "Chat interface displays 'Vedu' as the assistant name in the header",
+        "Chat interface can be minimized back to the bubble icon"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/Footer.tsx",
+          "path": "frontend/src/components/VeduChatbot.tsx",
+          "operation": "create",
+          "description": "Create the Vedu chatbot component with a floating bubble icon in the bottom-left corner and expandable chat interface overlay. The component should toggle between collapsed (bubble icon showing the generated vedu-avatar image from frontend/public/assets/generated/vedu-avatar.dim_64x64.png) and expanded (chat interface) states. Style consistently with the deep blue, gold accent, and beige theme. Position must not overlap with the WhatsApp button in the bottom-right corner."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Update the Instagram social media link href attribute to https://www.instagram.com/vedahealar/ and ensure the link includes target=\"_blank\" and rel=\"noopener noreferrer\" for security"
+          "description": "Import and add the VeduChatbot component to the main App layout, rendering it alongside the existing WhatsAppButton so it appears on all pages. Verify the read_file output to identify the correct placement within the RouterProvider structure."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+      "summary": "Implement chat interface with message history display, user input field, and send button. Messages should display with timestamps and differentiate between user messages and Vedu's responses using distinct styling.",
       "acceptanceCriteria": [
-        "The Instagram icon in the Contact page links to https://www.instagram.com/vedahealar/",
-        "The link opens in a new tab with appropriate security attributes"
+        "Chat interface shows scrollable message history",
+        "User can type messages in an input field at the bottom",
+        "Send button or Enter key submits the message",
+        "User messages and bot responses are visually distinct",
+        "Messages display in chronological order with timestamps"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/Contact.tsx",
+          "path": "frontend/src/components/VeduChatbot.tsx",
           "operation": "modify",
-          "description": "Update the Instagram social media link href attribute to https://www.instagram.com/vedahealar/ and ensure the link includes target=\"_blank\" and rel=\"noopener noreferrer\" for security"
+          "description": "Implement the chat interface within the expanded state: add a scrollable message history area displaying messages in chronological order with timestamps, a text input field at the bottom for user messages, and a send button. Use Enter key to submit messages. Style user messages distinctly from Vedu's responses (e.g., different background colors, alignment). Maintain the deep blue/gold/beige theme."
+        },
+        {
+          "path": "frontend/src/hooks/useChatMessages.ts",
+          "operation": "create",
+          "description": "Create a React hook to manage chat message state, including adding user messages, receiving bot responses, and maintaining the conversation history in memory. This hook will coordinate with backend queries for processing messages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement appointment booking assistance where Vedu can guide users through the booking process by collecting their name, email, phone number, preferred date/time, and service selection through conversational interactions. When complete, trigger the same booking submission to the Google Apps Script endpoint used by BookingForm.",
+      "acceptanceCriteria": [
+        "Vedu can initiate the booking flow through chat conversation",
+        "Bot collects all required booking fields (name, email, phone, date, time, service, optional message) conversationally",
+        "Bot validates inputs during the conversation (email format, phone number, future dates)",
+        "Upon completion, booking data is submitted to the same Google Apps Script endpoint as BookingForm",
+        "User receives confirmation message in chat after successful booking"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useVeduChat.ts",
+          "operation": "create",
+          "description": "Create a React hook that manages the conversational booking flow by tracking collected booking data (name, email, phone, date, time, service, message), validating inputs (email format, phone number format, future dates), and coordinating with backend methods (startBookingSession, processBookingResponse) from the backend interface. When booking is complete, submit the collected data to the same Google Apps Script endpoint used by BookingForm component. Verify the BookingForm component's usage instructions before implementing the submission logic."
+        },
+        {
+          "path": "frontend/src/components/VeduChatbot.tsx",
+          "operation": "modify",
+          "description": "Integrate the useVeduChat hook to handle booking flow interactions. Display bot responses that guide users through collecting booking information conversationally. Show validation errors inline within the chat. Display a confirmation message after successful booking submission."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks to call backend methods for Vedu chat functionality: startBookingSession, processBookingResponse, getMessage, and getVeduData. These hooks will be consumed by useVeduChat to coordinate the booking conversation flow with the backend."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add greeting message from Vedu when chat is first opened, introducing itself and offering assistance with learning about Vedahealar services or booking an appointment.",
+      "acceptanceCriteria": [
+        "When chat interface is opened for the first time, Vedu sends an automatic greeting message",
+        "Greeting introduces Vedu by name and explains its purpose",
+        "Greeting offers specific help options (learn about services, book appointment)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/VeduChatbot.tsx",
+          "operation": "modify",
+          "description": "Add logic to display an automatic greeting message from Vedu when the chat interface is first opened. The greeting should introduce Vedu by name, explain its purpose as an assistant for Vedahealar, and offer help options including learning about services (numerology, name correction, lucky numbers, reiki healing, business name analysis) and booking an appointment. Use the backend's getVeduData method to retrieve initial messages if available."
+        },
+        {
+          "path": "frontend/src/hooks/useChatMessages.ts",
+          "operation": "modify",
+          "description": "Add initialization logic to prepopulate the message history with Vedu's greeting message when the chat is first opened, ensuring it only appears once per session."
         }
       ]
     }

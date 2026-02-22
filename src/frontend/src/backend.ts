@@ -93,6 +93,17 @@ export interface TransformationInput {
     context: Uint8Array;
     response: http_request_result;
 }
+export interface VeduMessage {
+    id: bigint;
+    skipQuestions: Array<string>;
+    text: string;
+    hasCallback: boolean;
+    intent: string;
+    details?: string;
+    externalEndpoint?: string;
+    nextQuestion?: string;
+    options: Array<string>;
+}
 export interface TransformationOutput {
     status: bigint;
     body: Uint8Array;
@@ -108,10 +119,166 @@ export interface http_request_result {
     headers: Array<http_header>;
 }
 export interface backendInterface {
+    getAllMessages(): Promise<Array<VeduMessage>>;
+    getBookingSteps(): Promise<{
+        flowIndex: bigint;
+        questions: Array<string>;
+    }>;
+    getMessage(messageId: bigint): Promise<VeduMessage | null>;
+    getVeduData(): Promise<{
+        messages: Array<VeduMessage>;
+        bookingQuestions: Array<VeduMessage>;
+    }>;
+    initializeMessages(): Promise<void>;
+    processBookingResponse(userId: string, response: string): Promise<{
+        completed: boolean;
+        summary?: string;
+        nextQuestion?: string;
+    }>;
+    startBookingSession(userId: string): Promise<bigint>;
+    submitBooking(formData: Array<string>): Promise<string>;
+    submitSingleBooking(formData: Array<string>): Promise<string>;
     transform(input: TransformationInput): Promise<TransformationOutput>;
 }
+import type { VeduMessage as _VeduMessage } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
+    async getAllMessages(): Promise<Array<VeduMessage>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getAllMessages();
+                return from_candid_vec_n1(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getAllMessages();
+            return from_candid_vec_n1(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async getBookingSteps(): Promise<{
+        flowIndex: bigint;
+        questions: Array<string>;
+    }> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getBookingSteps();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getBookingSteps();
+            return result;
+        }
+    }
+    async getMessage(arg0: bigint): Promise<VeduMessage | null> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getMessage(arg0);
+                return from_candid_opt_n5(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getMessage(arg0);
+            return from_candid_opt_n5(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async getVeduData(): Promise<{
+        messages: Array<VeduMessage>;
+        bookingQuestions: Array<VeduMessage>;
+    }> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getVeduData();
+                return from_candid_record_n6(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getVeduData();
+            return from_candid_record_n6(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async initializeMessages(): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.initializeMessages();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.initializeMessages();
+            return result;
+        }
+    }
+    async processBookingResponse(arg0: string, arg1: string): Promise<{
+        completed: boolean;
+        summary?: string;
+        nextQuestion?: string;
+    }> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.processBookingResponse(arg0, arg1);
+                return from_candid_record_n7(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.processBookingResponse(arg0, arg1);
+            return from_candid_record_n7(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async startBookingSession(arg0: string): Promise<bigint> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.startBookingSession(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.startBookingSession(arg0);
+            return result;
+        }
+    }
+    async submitBooking(arg0: Array<string>): Promise<string> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.submitBooking(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.submitBooking(arg0);
+            return result;
+        }
+    }
+    async submitSingleBooking(arg0: Array<string>): Promise<string> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.submitSingleBooking(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.submitSingleBooking(arg0);
+            return result;
+        }
+    }
     async transform(arg0: TransformationInput): Promise<TransformationOutput> {
         if (this.processError) {
             try {
@@ -126,6 +293,78 @@ export class Backend implements backendInterface {
             return result;
         }
     }
+}
+function from_candid_VeduMessage_n2(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: _VeduMessage): VeduMessage {
+    return from_candid_record_n3(_uploadFile, _downloadFile, value);
+}
+function from_candid_opt_n4(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [string]): string | null {
+    return value.length === 0 ? null : value[0];
+}
+function from_candid_opt_n5(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [_VeduMessage]): VeduMessage | null {
+    return value.length === 0 ? null : from_candid_VeduMessage_n2(_uploadFile, _downloadFile, value[0]);
+}
+function from_candid_record_n3(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    id: bigint;
+    skipQuestions: Array<string>;
+    text: string;
+    hasCallback: boolean;
+    intent: string;
+    details: [] | [string];
+    externalEndpoint: [] | [string];
+    nextQuestion: [] | [string];
+    options: Array<string>;
+}): {
+    id: bigint;
+    skipQuestions: Array<string>;
+    text: string;
+    hasCallback: boolean;
+    intent: string;
+    details?: string;
+    externalEndpoint?: string;
+    nextQuestion?: string;
+    options: Array<string>;
+} {
+    return {
+        id: value.id,
+        skipQuestions: value.skipQuestions,
+        text: value.text,
+        hasCallback: value.hasCallback,
+        intent: value.intent,
+        details: record_opt_to_undefined(from_candid_opt_n4(_uploadFile, _downloadFile, value.details)),
+        externalEndpoint: record_opt_to_undefined(from_candid_opt_n4(_uploadFile, _downloadFile, value.externalEndpoint)),
+        nextQuestion: record_opt_to_undefined(from_candid_opt_n4(_uploadFile, _downloadFile, value.nextQuestion)),
+        options: value.options
+    };
+}
+function from_candid_record_n6(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    messages: Array<_VeduMessage>;
+    bookingQuestions: Array<_VeduMessage>;
+}): {
+    messages: Array<VeduMessage>;
+    bookingQuestions: Array<VeduMessage>;
+} {
+    return {
+        messages: from_candid_vec_n1(_uploadFile, _downloadFile, value.messages),
+        bookingQuestions: from_candid_vec_n1(_uploadFile, _downloadFile, value.bookingQuestions)
+    };
+}
+function from_candid_record_n7(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    completed: boolean;
+    summary: [] | [string];
+    nextQuestion: [] | [string];
+}): {
+    completed: boolean;
+    summary?: string;
+    nextQuestion?: string;
+} {
+    return {
+        completed: value.completed,
+        summary: record_opt_to_undefined(from_candid_opt_n4(_uploadFile, _downloadFile, value.summary)),
+        nextQuestion: record_opt_to_undefined(from_candid_opt_n4(_uploadFile, _downloadFile, value.nextQuestion))
+    };
+}
+function from_candid_vec_n1(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: Array<_VeduMessage>): Array<VeduMessage> {
+    return value.map((x)=>from_candid_VeduMessage_n2(_uploadFile, _downloadFile, x));
 }
 export interface CreateActorOptions {
     agent?: Agent;

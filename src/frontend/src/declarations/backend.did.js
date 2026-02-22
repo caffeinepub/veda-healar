@@ -8,6 +8,17 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const VeduMessage = IDL.Record({
+  'id' : IDL.Nat,
+  'skipQuestions' : IDL.Vec(IDL.Text),
+  'text' : IDL.Text,
+  'hasCallback' : IDL.Bool,
+  'intent' : IDL.Text,
+  'details' : IDL.Opt(IDL.Text),
+  'externalEndpoint' : IDL.Opt(IDL.Text),
+  'nextQuestion' : IDL.Opt(IDL.Text),
+  'options' : IDL.Vec(IDL.Text),
+});
 export const http_header = IDL.Record({
   'value' : IDL.Text,
   'name' : IDL.Text,
@@ -28,6 +39,38 @@ export const TransformationOutput = IDL.Record({
 });
 
 export const idlService = IDL.Service({
+  'getAllMessages' : IDL.Func([], [IDL.Vec(VeduMessage)], ['query']),
+  'getBookingSteps' : IDL.Func(
+      [],
+      [IDL.Record({ 'flowIndex' : IDL.Nat, 'questions' : IDL.Vec(IDL.Text) })],
+      [],
+    ),
+  'getMessage' : IDL.Func([IDL.Nat], [IDL.Opt(VeduMessage)], ['query']),
+  'getVeduData' : IDL.Func(
+      [],
+      [
+        IDL.Record({
+          'messages' : IDL.Vec(VeduMessage),
+          'bookingQuestions' : IDL.Vec(VeduMessage),
+        }),
+      ],
+      ['query'],
+    ),
+  'initializeMessages' : IDL.Func([], [], []),
+  'processBookingResponse' : IDL.Func(
+      [IDL.Text, IDL.Text],
+      [
+        IDL.Record({
+          'completed' : IDL.Bool,
+          'summary' : IDL.Opt(IDL.Text),
+          'nextQuestion' : IDL.Opt(IDL.Text),
+        }),
+      ],
+      [],
+    ),
+  'startBookingSession' : IDL.Func([IDL.Text], [IDL.Nat], []),
+  'submitBooking' : IDL.Func([IDL.Vec(IDL.Text)], [IDL.Text], []),
+  'submitSingleBooking' : IDL.Func([IDL.Vec(IDL.Text)], [IDL.Text], []),
   'transform' : IDL.Func(
       [TransformationInput],
       [TransformationOutput],
@@ -38,6 +81,17 @@ export const idlService = IDL.Service({
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
+  const VeduMessage = IDL.Record({
+    'id' : IDL.Nat,
+    'skipQuestions' : IDL.Vec(IDL.Text),
+    'text' : IDL.Text,
+    'hasCallback' : IDL.Bool,
+    'intent' : IDL.Text,
+    'details' : IDL.Opt(IDL.Text),
+    'externalEndpoint' : IDL.Opt(IDL.Text),
+    'nextQuestion' : IDL.Opt(IDL.Text),
+    'options' : IDL.Vec(IDL.Text),
+  });
   const http_header = IDL.Record({ 'value' : IDL.Text, 'name' : IDL.Text });
   const http_request_result = IDL.Record({
     'status' : IDL.Nat,
@@ -55,6 +109,43 @@ export const idlFactory = ({ IDL }) => {
   });
   
   return IDL.Service({
+    'getAllMessages' : IDL.Func([], [IDL.Vec(VeduMessage)], ['query']),
+    'getBookingSteps' : IDL.Func(
+        [],
+        [
+          IDL.Record({
+            'flowIndex' : IDL.Nat,
+            'questions' : IDL.Vec(IDL.Text),
+          }),
+        ],
+        [],
+      ),
+    'getMessage' : IDL.Func([IDL.Nat], [IDL.Opt(VeduMessage)], ['query']),
+    'getVeduData' : IDL.Func(
+        [],
+        [
+          IDL.Record({
+            'messages' : IDL.Vec(VeduMessage),
+            'bookingQuestions' : IDL.Vec(VeduMessage),
+          }),
+        ],
+        ['query'],
+      ),
+    'initializeMessages' : IDL.Func([], [], []),
+    'processBookingResponse' : IDL.Func(
+        [IDL.Text, IDL.Text],
+        [
+          IDL.Record({
+            'completed' : IDL.Bool,
+            'summary' : IDL.Opt(IDL.Text),
+            'nextQuestion' : IDL.Opt(IDL.Text),
+          }),
+        ],
+        [],
+      ),
+    'startBookingSession' : IDL.Func([IDL.Text], [IDL.Nat], []),
+    'submitBooking' : IDL.Func([IDL.Vec(IDL.Text)], [IDL.Text], []),
+    'submitSingleBooking' : IDL.Func([IDL.Vec(IDL.Text)], [IDL.Text], []),
     'transform' : IDL.Func(
         [TransformationInput],
         [TransformationOutput],

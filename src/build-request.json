@@ -1,50 +1,116 @@
 {
   "kind": "build_request",
-  "title": "Update Instagram social media link",
+  "title": "Add AI chatbot assistant 'Vedu' for user assistance and appointment booking",
+  "projectName": "Veda Healar",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
+      "text": "Create a chatbot UI component named 'Vedu' with a floating chat bubble icon positioned in the bottom-left corner (opposite the WhatsApp button). The icon should display when collapsed and expand into a chat interface when clicked.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-latest"
+          "msg-latest"
         ],
         "quotes": [
-          "in insta use this:- https://www.instagram.com/vedahealar/"
+          "add an ai chat bot assistant \" Vedu \""
         ]
       },
       "acceptanceCriteria": [
-        "The Instagram icon in the Footer links to https://www.instagram.com/vedahealar/",
-        "The link opens in a new tab with appropriate security attributes"
+        "Chat bubble icon appears in bottom-left corner with consistent styling to match the application theme",
+        "Clicking the icon opens a chat interface overlay",
+        "Chat interface displays 'Vedu' as the assistant name in the header",
+        "Chat interface can be minimized back to the bubble icon"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+      "text": "Implement chat interface with message history display, user input field, and send button. Messages should display with timestamps and differentiate between user messages and Vedu's responses using distinct styling.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-latest"
-        ],
-        "quotes": [
-          "in insta use this:- https://www.instagram.com/vedahealar/"
+          "msg-latest"
         ]
       },
       "acceptanceCriteria": [
-        "The Instagram icon in the Contact page links to https://www.instagram.com/vedahealar/",
-        "The link opens in a new tab with appropriate security attributes"
+        "Chat interface shows scrollable message history",
+        "User can type messages in an input field at the bottom",
+        "Send button or Enter key submits the message",
+        "User messages and bot responses are visually distinct",
+        "Messages display in chronological order with timestamps"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create backend function to handle chat messages and generate contextual responses about Vedahealar services (numerology, name correction, lucky numbers, reiki healing, business name analysis). Include information about the consultation booking process and pricing.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "assist to know more about vedahealar"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a chat endpoint that accepts user messages",
+        "Responses provide accurate information about all five Vedahealar services",
+        "Bot can explain the consultation booking process",
+        "Bot can provide pricing information for services",
+        "Responses are contextual and conversational in tone"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement appointment booking assistance where Vedu can guide users through the booking process by collecting their name, email, phone number, preferred date/time, and service selection through conversational interactions. When complete, trigger the same booking submission to the Google Apps Script endpoint used by BookingForm.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "help users to book an appointment"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Vedu can initiate the booking flow through chat conversation",
+        "Bot collects all required booking fields (name, email, phone, date, time, service, optional message) conversationally",
+        "Bot validates inputs during the conversation (email format, phone number, future dates)",
+        "Upon completion, booking data is submitted to the same Google Apps Script endpoint as BookingForm",
+        "User receives confirmation message in chat after successful booking"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add greeting message from Vedu when chat is first opened, introducing itself and offering assistance with learning about Vedahealar services or booking an appointment.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When chat interface is opened for the first time, Vedu sends an automatic greeting message",
+        "Greeting introduces Vedu by name and explains its purpose",
+        "Greeting offers specific help options (learn about services, book appointment)"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Chat interface must not overlap or interfere with the existing WhatsApp button in the bottom-right corner",
+    "Booking submissions through the chatbot must use the existing Google Apps Script endpoint (same as BookingForm component)",
+    "Maintain consistent design language with existing Veda Healar theme (deep blue, gold accent, beige background)"
+  ],
   "nonGoals": [
-    "Changing any other social media links",
-    "Modifying the styling or appearance of social media icons"
+    "Integration with external AI services or APIs (OpenAI, Anthropic, etc.)",
+    "Real-time chat with human operators",
+    "Chat history persistence across sessions or devices",
+    "Voice or audio interaction capabilities"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Chatbot avatar icon for Vedu with spiritual/Vedic theme (vedu-avatar.dim_64x64.png)"
+    ],
     "edits": []
   }
 }

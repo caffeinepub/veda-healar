@@ -1,46 +1,91 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T20:30:30.716Z",
+  "generatedAt": "2026-02-22T20:49:22.681Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 5,
+    "implemented": 4,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
+        "summary": "Create a chatbot UI component named 'Vedu' with a floating chat bubble icon positioned in the bottom-left corner (opposite the WhatsApp button). The icon should display when collapsed and expand into a chat interface when clicked.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/components/VeduChatbot.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/components/VeduChatbot.tsx",
+          "frontend/src/App.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+        "summary": "Implement chat interface with message history display, user input field, and send button. Messages should display with timestamps and differentiate between user messages and Vedu's responses using distinct styling.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/Contact.tsx"
+          "frontend/src/components/VeduChatbot.tsx",
+          "frontend/src/hooks/useChatMessages.ts"
         ],
         "matchedFiles": [
-          "frontend/src/pages/Contact.tsx"
+          "frontend/src/components/VeduChatbot.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Create backend function to handle chat messages and generate contextual responses about Vedahealar services (numerology, name correction, lucky numbers, reiki healing, business name analysis). Include information about the consultation booking process and pricing.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement appointment booking assistance where Vedu can guide users through the booking process by collecting their name, email, phone number, preferred date/time, and service selection through conversational interactions. When complete, trigger the same booking submission to the Google Apps Script endpoint used by BookingForm.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useVeduChat.ts",
+          "frontend/src/components/VeduChatbot.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useVeduChat.ts",
+          "frontend/src/components/VeduChatbot.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add greeting message from Vedu when chat is first opened, introducing itself and offering assistance with learning about Vedahealar services or booking an appointment.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/VeduChatbot.tsx",
+          "frontend/src/hooks/useChatMessages.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/VeduChatbot.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/Footer.tsx",
-    "frontend/src/pages/Contact.tsx",
+    "frontend/public/assets/generated/vedu-avatar.dim_64x64.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/VeduChatbot.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useVeduChat.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -1,5 +1,5 @@
 {
-  "frontend/src/App.tsx": "Main application component with TanStack Router setup using Outlet for proper route rendering, includes Layout component with Navbar, Footer, and WhatsAppButton wrapping all routes.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, Layout component with Navbar, Footer, WhatsAppButton, and VeduChatbot wrapping all routes.",
   "frontend/src/pages/Home.tsx": "Home page component that composes HeroSection, ServicesOverview, AboutIntro, and TestimonialsSlider sections.",
   "frontend/src/pages/About.tsx": "About page with detailed information about Veda Healar's Vedic wisdom practice, guiding principles, and expertise areas with scroll reveal animations.",
   "frontend/src/pages/Services.tsx": "Services page displaying all five service offerings with proper TanStack Router Link navigation to booking page.",
@@ -17,7 +17,9 @@
   "frontend/src/components/PaymentPlaceholder.tsx": "Payment integration placeholder showing supported payment methods (Razorpay, Stripe, UPI, Bank Transfer) with structure ready for future integration.",
   "frontend/src/components/WhatsAppButton.tsx": "Fixed floating WhatsApp button linking to phone number 7096912557 with pulse animation and hover effects.",
   "frontend/src/hooks/useScrollReveal.ts": "Custom hook using Intersection Observer API to detect when elements enter viewport for scroll reveal animations.",
-  "frontend/src/hooks/useQueries.ts": "React Query hooks file for backend data fetching operations, currently empty as booking form uses client-side Google Sheets integration via Google Apps Script.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend data fetching and mutations including Vedu chat functionality (getVeduData, getMessage, getAllMessages, startBookingSession, processBookingResponse, submitBooking, initializeMessages).",
   "frontend/src/index.css": "Global styles with OKLCH color system, custom Veda Healar colors (deep blue, gold, beige), serif/sans-serif typography, scroll reveal animations, and custom scrollbar styling.",
-  "frontend/tailwind.config.js": "Tailwind configuration with custom Veda Healar color palette (deepBlue, goldAccent, beigeBackground), Playfair Display serif font for headings, Inter sans-serif for body, and custom shadows."
+  "frontend/tailwind.config.js": "Tailwind configuration with custom Veda Healar color palette (deepBlue, goldAccent, beigeBackground), Playfair Display serif font for headings, Inter sans-serif for body, and custom shadows.",
+  "frontend/src/components/VeduChatbot.tsx": "AI chatbot assistant component with floating bubble icon in bottom-left corner, expandable chat interface with message history, user input field, and integration with useVeduChat hook for conversational interactions.",
+  "frontend/src/hooks/useVeduChat.ts": "Custom React hook managing Vedu chatbot conversation logic including booking flow state, input validation (email, phone, date, time), service information responses, and Google Sheets submission for completed bookings."
 }

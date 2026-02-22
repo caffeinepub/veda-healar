@@ -19,6 +19,17 @@ export interface TransformationOutput {
   'body' : Uint8Array,
   'headers' : Array<http_header>,
 }
+export interface VeduMessage {
+  'id' : bigint,
+  'skipQuestions' : Array<string>,
+  'text' : string,
+  'hasCallback' : boolean,
+  'intent' : string,
+  'details' : [] | [string],
+  'externalEndpoint' : [] | [string],
+  'nextQuestion' : [] | [string],
+  'options' : Array<string>,
+}
 export interface http_header { 'value' : string, 'name' : string }
 export interface http_request_result {
   'status' : bigint,
@@ -26,6 +37,28 @@ export interface http_request_result {
   'headers' : Array<http_header>,
 }
 export interface _SERVICE {
+  'getAllMessages' : ActorMethod<[], Array<VeduMessage>>,
+  'getBookingSteps' : ActorMethod<
+    [],
+    { 'flowIndex' : bigint, 'questions' : Array<string> }
+  >,
+  'getMessage' : ActorMethod<[bigint], [] | [VeduMessage]>,
+  'getVeduData' : ActorMethod<
+    [],
+    { 'messages' : Array<VeduMessage>, 'bookingQuestions' : Array<VeduMessage> }
+  >,
+  'initializeMessages' : ActorMethod<[], undefined>,
+  'processBookingResponse' : ActorMethod<
+    [string, string],
+    {
+      'completed' : boolean,
+      'summary' : [] | [string],
+      'nextQuestion' : [] | [string],
+    }
+  >,
+  'startBookingSession' : ActorMethod<[string], bigint>,
+  'submitBooking' : ActorMethod<[Array<string>], string>,
+  'submitSingleBooking' : ActorMethod<[Array<string>], string>,
   'transform' : ActorMethod<[TransformationInput], TransformationOutput>,
 }
 export declare const idlService: IDL.ServiceClass;
