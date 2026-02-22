@@ -13,7 +13,7 @@
   "frontend/src/components/AboutIntro.tsx": "About introduction section with Veda Healar's mission, values, and key principles displayed with icons and descriptions.",
   "frontend/src/components/TestimonialsSlider.tsx": "Auto-rotating testimonials carousel with manual navigation controls, displaying client reviews with ratings and service types.",
   "frontend/src/components/ServiceCard.tsx": "Reusable service card component with icon, name, description, price, and \"Book Now\" button with hover effects and scroll reveal animation.",
-  "frontend/src/components/BookingForm.tsx": "Booking form with validation that submits appointment data to Google Sheets via Google Apps Script web app endpoint, includes all form fields (name, email, phone, date, service, message) with proper error handling and loading states.",
+  "frontend/src/components/BookingForm.tsx": "Booking form component with validation that submits appointment data (name, email, phone, date, time, service, message) to the new Google Apps Script web app endpoint at https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec, includes proper error handling, loading states, and a new time field for consultation scheduling.",
   "frontend/src/components/PaymentPlaceholder.tsx": "Payment integration placeholder showing supported payment methods (Razorpay, Stripe, UPI, Bank Transfer) with structure ready for future integration.",
   "frontend/src/components/WhatsAppButton.tsx": "Fixed floating WhatsApp button linking to phone number 7096912557 with pulse animation and hover effects.",
   "frontend/src/hooks/useScrollReveal.ts": "Custom hook using Intersection Observer API to detect when elements enter viewport for scroll reveal animations.",

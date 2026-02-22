@@ -2,12 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-fix-multi-page-routing-so-that-navigation-to-about-services-book-consultation-testimonials-and-contact-pages-works-correctly-from-all-navigation-links-and-buttons-throughout-the-site",
-      "featureTitle": "Fix multi-page routing so that navigation to About, Services, Book Consultation, Testimonials, and Contact pages works correctly from all navigation links and buttons throughout the site",
+      "featureId": "feature-update-the-booking-form-submission-endpoint-to-use-the-new-google-apps-script-web-app-url-https-script-google-com-macros-s-akfycbynx8qzl8z7as3uaxulxylx62hnz4kx7pt32mqke9b1hszcgd0frgb2cicrvh7qqabvqq-exec",
+      "featureTitle": "Update the booking form submission endpoint to use the new Google Apps Script web app URL: https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/Services.tsx",
-        "frontend/src/pages/Testimonials.tsx"
+        "frontend/src/components/BookingForm.tsx"
       ],
       "components": [
         "http-outcalls@3.0.0",
@@ -18,28 +16,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-13"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-whatsapp-button-to-use-phone-number-7096912557-instead-of-9096912557",
-      "featureTitle": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
-      "files": [
-        "frontend/src/components/Footer.tsx",
-        "frontend/src/components/WhatsAppButton.tsx",
-        "frontend/src/pages/Contact.tsx"
-      ],
-      "components": [
-        "http-outcalls@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-14"
+        "REQ-1"
       ],
       "confidence": "high"
     }

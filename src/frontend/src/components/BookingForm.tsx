@@ -12,6 +12,7 @@ interface FormData {
   email: string;
   phone: string;
   preferredDate: string;
+  preferredTime: string;
   service: string;
   message: string;
 }
@@ -21,6 +22,7 @@ interface FormErrors {
   email?: string;
   phone?: string;
   preferredDate?: string;
+  preferredTime?: string;
   service?: string;
 }
 
@@ -38,6 +40,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     email: '',
     phone: '',
     preferredDate: '',
+    preferredTime: '',
     service: '',
     message: '',
   });
@@ -45,8 +48,8 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
   const submitMutation = useMutation({
     mutationFn: async (data: FormData) => {
-      // Google Apps Script Web App URL - needs to be deployed
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbwYOUR_DEPLOYMENT_ID/exec';
+      // Google Apps Script Web App URL
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec';
       
       const response = await fetch(scriptUrl, {
         method: 'POST',
@@ -55,10 +58,11 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fullName: data.fullName,
+          name: data.fullName,
           email: data.email,
           phone: data.phone,
-          preferredDate: data.preferredDate,
+          date: data.preferredDate,
+          time: data.preferredTime,
           service: data.service,
           message: data.message,
           timestamp: new Date().toISOString(),
@@ -76,6 +80,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         email: '',
         phone: '',
         preferredDate: '',
+        preferredTime: '',
         service: '',
         message: '',
       });
@@ -117,6 +122,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
       if (selectedDate < today) {
         newErrors.preferredDate = 'Please select a future date';
       }
+    }
+
+    if (!formData.preferredTime) {
+      newErrors.preferredTime = 'Preferred time is required';
     }
 
     if (!formData.service) {
@@ -227,6 +236,26 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
+      {/* Preferred Time */}
+      <div>
+        <label htmlFor="preferredTime" className="block text-sm font-semibold text-deepBlue mb-2">
+          Preferred Consultation Time *
+        </label>
+        <input
+          type="time"
+          id="preferredTime"
+          name="preferredTime"
+          value={formData.preferredTime}
+          onChange={handleChange}
+          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
+            errors.preferredTime ? 'border-red-500' : 'border-gray-300'
+          }`}
+        />
+        {errors.preferredTime && (
+          <p className="mt-1 text-sm text-red-500">{errors.preferredTime}</p>
+        )}
+      </div>
+
       {/* Service Selection */}
       <div>
         <label htmlFor="service" className="block text-sm font-semibold text-deepBlue mb-2">
@@ -243,7 +272,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         >
           <option value="">Choose a service...</option>
           {services.map((service) => (
-            <option key={service.id} value={service.id}>
+            <option key={service.id} value={service.name}>
               {service.name}
             </option>
           ))}

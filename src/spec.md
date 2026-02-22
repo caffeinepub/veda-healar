@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Fix page navigation, update WhatsApp contact number, and connect booking form to Google Sheets.
+**Goal:** Update the booking form to submit data to the new Google Apps Script webhook URL.
 
 **Planned changes:**
-- Fix multi-page routing so all navigation links (About, Services, Book Consultation, Testimonials, Contact) work correctly throughout the site
-- Update WhatsApp button and footer link to use phone number 7096912557
-- Configure booking form to submit data (name, email, phone, date, service, message) to the specified Google Sheet
+- Update the BookingForm component to POST booking data to the new Google Apps Script web app endpoint
+- Ensure form submission sends all booking fields (name, email, phone, date, time, service) to the new URL
+- Maintain existing success/error response handling
 
-**User-visible outcome:** Users can navigate between all pages seamlessly, contact via the correct WhatsApp number, and their booking form submissions are automatically saved to Google Sheets.
+**User-visible outcome:** Users can submit booking requests through the form, which will now be processed by the updated Google Apps Script webhook.

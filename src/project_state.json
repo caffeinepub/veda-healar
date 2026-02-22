@@ -1,186 +1,26 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Veda Healar - A premium spiritual numerology and Vedic healing website with cosmic design aesthetic, featuring numerology readings, name correction, Reiki healing, and business name analysis services. Includes Home, About, Services, Booking, Testimonials, and Contact pages with WhatsApp integration (7096912557) and Google Sheets booking form integration.",
+  "projectStateVersion": 3,
+  "summary": "A booking form application that integrates with WhatsApp and Google Sheets via Apps Script to collect appointment data (name, email, phone, date, time, service)",
   "architectural_notes": [
-    "Pure HTML5, CSS3, Vanilla JS implementation with no frameworks",
-    "Mobile-first responsive design approach",
-    "SEO optimized with proper meta tags",
-    "Clean folder structure with separated HTML, CSS, JS files",
-    "Google Sheets API integration for booking form submissions",
-    "Razorpay/Stripe payment integration placeholder structure"
+    "Uses Google Apps Script as backend webhook to receive POST requests",
+    "Apps Script doPost function parses JSON and appends booking data to Google Sheet",
+    "Web app deployed with 'Execute as: Me' and 'Who has access: Anyone'",
+    "Data fields: timestamp, name, email, phone, date, time, service"
   ],
-  "known_issues": [
-    "Navigation to other pages (About, Services, Booking, Testimonials, Contact) not working - multi-page routing broken"
-  ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-multi-page-website-structure-with-home-about-services-book-consultation-testimonials-and-contact-pages-using-react-router-for-navigation",
-      "title": "Create a multi-page website structure with Home, About, Services, Book Consultation, Testimonials, and Contact pages using React Router for navigation",
+      "id": "feature-update-the-booking-form-submission-endpoint-to-use-the-new-google-apps-script-web-app-url-https-script-google-com-macros-s-akfycbynx8qzl8z7as3uaxulxylx62hnz4kx7pt32mqke9b1hszcgd0frgb2cicrvh7qqabvqq-exec",
+      "title": "Update the booking form submission endpoint to use the new Google Apps Script web app URL: https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-implement-premium-cosmic-spiritual-design-theme-with-deep-blue-0b1c2d-gold-accent-d4af37-beige-background-f5f0e6-and-white-sections-using-tailwind-css-use-serif-fonts-for-headings-and-sans-serif-for-body-text-include-subtle-mandala-or-energy-glow-background-effects",
-      "title": "Implement premium cosmic spiritual design theme with deep blue (#0B1C2D), gold accent (#D4AF37), beige background (#F5F0E6), and white sections using Tailwind CSS. Use serif fonts for headings and sans-serif for body text. Include subtle mandala or energy glow background effects",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-build-home-page-with-hero-section-displaying-headline-unlock-your-destiny-with-vedic-wisdom-subtext-describing-spiritual-guidance-cta-button-book-your-destiny-reading-services-overview-cards-about-section-intro-testimonials-slider-and-footer-with-disclaimer-and-social-links",
-      "title": "Build Home page with hero section displaying headline 'Unlock Your Destiny with Vedic Wisdom', subtext describing spiritual guidance, CTA button 'Book Your Destiny Reading', services overview cards, about section intro, testimonials slider, and footer with disclaimer and social links",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-services-section-with-individual-service-cards-for-numerology-reading-name-correction-lucky-number-selection-reiki-energy-healing-and-business-name-analysis-each-card-must-display-a-short-description-starting-price-placeholder-and-book-now-button",
-      "title": "Create Services section with individual service cards for Numerology Reading, Name Correction, Lucky Number Selection, Reiki & Energy Healing, and Business Name Analysis. Each card must display a short description, starting price placeholder, and 'Book Now' button",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-build-booking-form-page-with-fields-for-full-name-email-phone-preferred-date-and-message-implement-client-side-form-validation-and-display-success-message-upon-submission",
-      "title": "Build booking form page with fields for Full Name, Email, Phone, Preferred Date, and Message. Implement client-side form validation and display success message upon submission",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-floating-whatsapp-button-that-links-to-whatsapp-number-9096912557-positioned-fixed-on-the-screen",
-      "title": "Add floating WhatsApp button that links to WhatsApp number 9096912557, positioned fixed on the screen",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-sticky-navigation-bar-with-smooth-scroll-navigation-and-mobile-hamburger-menu-that-works-across-all-breakpoints",
-      "title": "Implement sticky navigation bar with smooth scroll navigation and mobile hamburger menu that works across all breakpoints",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-scroll-reveal-animations-and-hover-effects-throughout-the-site-for-modern-interactive-experience",
-      "title": "Add scroll reveal animations and hover effects throughout the site for modern interactive experience",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-footer-with-address-placeholder-email-placeholder-whatsapp-link-to-9096912557-and-disclaimer-text-all-services-are-spiritual-guidance-based-and-not-medical-legal-or-financial-advice",
-      "title": "Create footer with address placeholder, email placeholder, WhatsApp link to 9096912557, and disclaimer text: 'All services are spiritual guidance based and not medical, legal or financial advice.'",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-payment-integration-placeholder-structure-ready-for-razorpay-or-stripe-integration-on-the-booking-page",
-      "title": "Add payment integration placeholder structure ready for Razorpay or Stripe integration on the booking page",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-fully-responsive-mobile-first-design-that-works-seamlessly-across-all-device-sizes-with-fast-loading-performance",
-      "title": "Ensure fully responsive mobile-first design that works seamlessly across all device sizes with fast loading performance",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-fix-multi-page-routing-so-that-navigation-to-about-services-book-consultation-testimonials-and-contact-pages-works-correctly-from-all-navigation-links-and-buttons-throughout-the-site",
-      "title": "Fix multi-page routing so that navigation to About, Services, Book Consultation, Testimonials, and Contact pages works correctly from all navigation links and buttons throughout the site",
-      "reqIds": [
-        "REQ-13"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-whatsapp-button-to-use-phone-number-7096912557-instead-of-9096912557",
-      "title": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
-      "reqIds": [
-        "REQ-14"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Build complete multi-page website with Home, About, Services, Booking, Testimonials, and Contact pages",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Implement cosmic spiritual design with deep blue, gold, and beige color scheme, mandala/energy glow backgrounds",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Create service cards for numerology reading, name correction, lucky number selection, Reiki healing, and business name analysis",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Build booking form with validation and Google Sheets integration (specified sheet URL)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Add WhatsApp floating button with number 9096912557",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Implement responsive design with sticky navbar, smooth scrolling, hamburger menu, and scroll animations",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Add payment integration placeholder (Razorpay/Stripe ready structure)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-13",
-      "summary": "Integrate booking form submission with Google Sheets at URL https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0 to store form data",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-16",
-      "summary": "Configure booking form to submit data to Google Sheet at https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0, sending name, email, phone, date, service, and message fields",
-      "reqIds": [
-        "REQ-15"
-      ],
-      "status": "pending"
-    }
-  ],
-  "gameProjectType": "none",
+  "new_feature_requests": [],
   "projectName": "Veda Healar",
   "clarification_mode": "instant",
   "clarification_rounds": 0

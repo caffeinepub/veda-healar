@@ -1,75 +1,38 @@
 {
   "kind": "build_request",
-  "title": "Fix page navigation and update WhatsApp number",
+  "title": "Update Google Apps Script webhook URL",
   "projectName": "Veda Healar",
-  "priority": "high",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-13",
-      "text": "Fix multi-page routing so that navigation to About, Services, Book Consultation, Testimonials, and Contact pages works correctly from all navigation links and buttons throughout the site",
+      "id": "REQ-1",
+      "text": "Update the booking form submission endpoint to use the new Google Apps Script web app URL: https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-12"
         ],
         "quotes": [
-          "no other pages are not working"
+          "here is the webapp url :- https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec"
         ]
       },
       "acceptanceCriteria": [
-        "Clicking navigation menu links successfully navigates to About, Services, Testimonials, and Contact pages",
-        "Clicking 'Book Now' or 'Book Your Destiny Reading' buttons successfully navigates to the booking page",
-        "Browser back/forward buttons work correctly with page navigation",
-        "All page routes render their respective content without errors"
-      ]
-    },
-    {
-      "id": "REQ-14",
-      "text": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "in whatsapp use this number 7096912557"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Floating WhatsApp button opens chat with number 7096912557",
-        "Footer WhatsApp link directs to number 7096912557",
-        "All WhatsApp references throughout the site use 7096912557"
-      ]
-    },
-    {
-      "id": "REQ-15",
-      "text": "Configure booking form to submit data to Google Sheet at https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0, sending name, email, phone, date, service, and message fields",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "when a user make an appointment then it should send the data to this google sheet https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Booking form submission successfully writes data to the specified Google Sheet",
-        "All form fields (name, email, phone, date, service, message) are captured in the sheet",
-        "User receives success confirmation after submission",
-        "Form data appears in the sheet immediately or within a reasonable time"
+        "The BookingForm component posts data to the new Google Apps Script URL",
+        "Form submission successfully sends booking data (name, email, phone, date, time, service) to the endpoint",
+        "Success and error responses from the Apps Script are handled appropriately"
       ]
     }
   ],
   "constraints": [
-    "Maintain existing cosmic spiritual design theme and styling",
-    "Preserve all existing page content and components",
-    "Keep single-actor backend architecture"
+    "Preserve existing form validation logic and UI",
+    "Maintain the current booking form fields (name, email, phone, date, time, service)",
+    "Keep existing success/error notification handling"
   ],
   "nonGoals": [
-    "Adding new pages beyond the existing six",
-    "Changing the design theme or color scheme",
-    "Implementing real payment processing (payment placeholder structure remains)"
+    "Changing the form layout or styling",
+    "Adding new form fields",
+    "Modifying the Google Apps Script code itself",
+    "Changing WhatsApp integration"
   ],
   "imageRequirements": {
     "required": [],
