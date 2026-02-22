@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-fix-multi-page-routing-so-that-navigation-to-about-services-book-consultation-testimonials-and-contact-pages-works-correctly-from-all-navigation-links-and-buttons-throughout-the-site",
+      "featureTitle": "Fix multi-page routing so that navigation to About, Services, Book Consultation, Testimonials, and Contact pages works correctly from all navigation links and buttons throughout the site",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Services.tsx",
+        "frontend/src/pages/Testimonials.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-whatsapp-button-to-use-phone-number-7096912557-instead-of-9096912557",
+      "featureTitle": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
+      "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/WhatsAppButton.tsx",
+        "frontend/src/pages/Contact.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

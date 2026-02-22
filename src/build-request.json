@@ -1,0 +1,78 @@
+{
+  "kind": "build_request",
+  "title": "Fix page navigation and update WhatsApp number",
+  "projectName": "Veda Healar",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "text": "Fix multi-page routing so that navigation to About, Services, Book Consultation, Testimonials, and Contact pages works correctly from all navigation links and buttons throughout the site",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "no other pages are not working"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking navigation menu links successfully navigates to About, Services, Testimonials, and Contact pages",
+        "Clicking 'Book Now' or 'Book Your Destiny Reading' buttons successfully navigates to the booking page",
+        "Browser back/forward buttons work correctly with page navigation",
+        "All page routes render their respective content without errors"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "in whatsapp use this number 7096912557"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Floating WhatsApp button opens chat with number 7096912557",
+        "Footer WhatsApp link directs to number 7096912557",
+        "All WhatsApp references throughout the site use 7096912557"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Configure booking form to submit data to Google Sheet at https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0, sending name, email, phone, date, service, and message fields",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "when a user make an appointment then it should send the data to this google sheet https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Booking form submission successfully writes data to the specified Google Sheet",
+        "All form fields (name, email, phone, date, service, message) are captured in the sheet",
+        "User receives success confirmation after submission",
+        "Form data appears in the sheet immediately or within a reasonable time"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain existing cosmic spiritual design theme and styling",
+    "Preserve all existing page content and components",
+    "Keep single-actor backend architecture"
+  ],
+  "nonGoals": [
+    "Adding new pages beyond the existing six",
+    "Changing the design theme or color scheme",
+    "Implementing real payment processing (payment placeholder structure remains)"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

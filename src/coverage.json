@@ -1,0 +1,80 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-22T19:28:14.580Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-13",
+        "summary": "Fix multi-page routing so that navigation to About, Services, Book Consultation, Testimonials, and Contact pages works correctly from all navigation links and buttons throughout the site",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/Navbar.tsx",
+          "frontend/src/components/HeroSection.tsx",
+          "frontend/src/components/ServicesOverview.tsx",
+          "frontend/src/components/ServiceCard.tsx",
+          "frontend/src/pages/Services.tsx",
+          "frontend/src/pages/Testimonials.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/pages/Services.tsx",
+          "frontend/src/pages/Testimonials.tsx"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/WhatsAppButton.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/pages/Contact.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/WhatsAppButton.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/pages/Contact.tsx"
+        ]
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Configure booking form to submit data to Google Sheet at https://docs.google.com/spreadsheets/d/1cHx7IUpbe1T9QaHAmD2eI6IHLvPPWufnLEo6YbwpoiI/edit?gid=0#gid=0, sending name, email, phone, date, service, and message fields",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/BookingForm.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/WhatsAppButton.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/Contact.tsx",
+    "frontend/src/pages/Services.tsx",
+    "frontend/src/pages/Testimonials.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

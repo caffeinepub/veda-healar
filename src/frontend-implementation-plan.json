@@ -1,0 +1,80 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix page navigation and update WhatsApp number",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "summary": "Fix multi-page routing so navigation works correctly from all navigation links and buttons throughout the site",
+      "acceptanceCriteria": [
+        "Clicking navigation menu links successfully navigates to About, Services, Testimonials, and Contact pages",
+        "Clicking 'Book Now' or 'Book Your Destiny Reading' buttons successfully navigates to the booking page",
+        "Browser back/forward buttons work correctly with page navigation",
+        "All page routes render their respective content without errors"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Review and fix the TanStack Router configuration to ensure all six routes (Home, About, Services, Book, Testimonials, Contact) are properly registered and navigable. Verify route definitions match the navigation links used throughout the application."
+        },
+        {
+          "path": "frontend/src/components/Navbar.tsx",
+          "operation": "modify",
+          "description": "Update navigation links to use proper TanStack Router Link components or navigation methods. Ensure all menu items (About, Services, Testimonials, Contact) and the 'Book Now' button correctly navigate to their respective routes without page reloads."
+        },
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Fix the 'Book Your Destiny Reading' CTA button to properly navigate to the booking page using TanStack Router navigation. Verify the 'Explore Services' button correctly navigates to the services page."
+        },
+        {
+          "path": "frontend/src/components/ServicesOverview.tsx",
+          "operation": "modify",
+          "description": "Ensure the 'View All Services' link and any 'Book Now' links in service cards properly navigate using TanStack Router navigation methods."
+        },
+        {
+          "path": "frontend/src/components/ServiceCard.tsx",
+          "operation": "modify",
+          "description": "Fix the 'Book Now' link in the ServiceCard component to properly navigate to the booking page with service ID parameters using TanStack Router navigation."
+        },
+        {
+          "path": "frontend/src/pages/Services.tsx",
+          "operation": "modify",
+          "description": "Verify that service cards on the Services page use proper navigation for 'Book Now' buttons that navigate to the booking page with the selected service pre-filled."
+        },
+        {
+          "path": "frontend/src/pages/Testimonials.tsx",
+          "operation": "modify",
+          "description": "Ensure the CTA section's booking link properly navigates to the booking page using TanStack Router navigation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Update WhatsApp button to use phone number 7096912557 instead of 9096912557",
+      "acceptanceCriteria": [
+        "Floating WhatsApp button opens chat with number 7096912557",
+        "Footer WhatsApp link directs to number 7096912557",
+        "All WhatsApp references throughout the site use 7096912557"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/WhatsAppButton.tsx",
+          "operation": "modify",
+          "description": "Update the WhatsApp phone number from 9096912557 to 7096912557 in the floating WhatsApp button's click handler URL."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the WhatsApp contact link from 9096912557 to 7096912557 in the footer contact details section."
+        },
+        {
+          "path": "frontend/src/pages/Contact.tsx",
+          "operation": "modify",
+          "description": "Update any WhatsApp references from 9096912557 to 7096912557 in the contact page WhatsApp link or contact information cards."
+        }
+      ]
+    }
+  ]
+}

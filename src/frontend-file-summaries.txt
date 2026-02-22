@@ -1,0 +1,23 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup using Outlet for proper route rendering, includes Layout component with Navbar, Footer, and WhatsAppButton wrapping all routes.",
+  "frontend/src/pages/Home.tsx": "Home page component that composes HeroSection, ServicesOverview, AboutIntro, and TestimonialsSlider sections.",
+  "frontend/src/pages/About.tsx": "About page with detailed information about Veda Healar's Vedic wisdom practice, guiding principles, and expertise areas with scroll reveal animations.",
+  "frontend/src/pages/Services.tsx": "Services page displaying all five service offerings with proper TanStack Router Link navigation to booking page.",
+  "frontend/src/pages/BookConsultation.tsx": "Booking consultation page with BookingForm component and PaymentPlaceholder, showing success message after form submission.",
+  "frontend/src/pages/Testimonials.tsx": "Testimonials page with client reviews and CTA section using TanStack Router Link for booking navigation.",
+  "frontend/src/pages/Contact.tsx": "Contact page with updated WhatsApp number 7096912557, contact information cards, and quick message form with TanStack Router Link for booking.",
+  "frontend/src/components/Navbar.tsx": "Sticky navigation bar with logo, desktop menu, mobile hamburger menu, and active link highlighting with smooth scroll behavior.",
+  "frontend/src/components/Footer.tsx": "Footer component with brand info, contact details including WhatsApp link to 7096912557, quick navigation links using TanStack Router Link components, social media icons, disclaimer, and Caffeine.ai attribution.",
+  "frontend/src/components/HeroSection.tsx": "Hero section with cosmic background image, mandala overlay, headline \"Unlock Your Destiny with Vedic Wisdom\", and CTA buttons.",
+  "frontend/src/components/ServicesOverview.tsx": "Services overview section displaying service cards in a responsive grid with scroll reveal animations.",
+  "frontend/src/components/AboutIntro.tsx": "About introduction section with Veda Healar's mission, values, and key principles displayed with icons and descriptions.",
+  "frontend/src/components/TestimonialsSlider.tsx": "Auto-rotating testimonials carousel with manual navigation controls, displaying client reviews with ratings and service types.",
+  "frontend/src/components/ServiceCard.tsx": "Reusable service card component with icon, name, description, price, and \"Book Now\" button with hover effects and scroll reveal animation.",
+  "frontend/src/components/BookingForm.tsx": "Booking form with validation that submits appointment data to Google Sheets via Google Apps Script web app endpoint, includes all form fields (name, email, phone, date, service, message) with proper error handling and loading states.",
+  "frontend/src/components/PaymentPlaceholder.tsx": "Payment integration placeholder showing supported payment methods (Razorpay, Stripe, UPI, Bank Transfer) with structure ready for future integration.",
+  "frontend/src/components/WhatsAppButton.tsx": "Fixed floating WhatsApp button linking to phone number 7096912557 with pulse animation and hover effects.",
+  "frontend/src/hooks/useScrollReveal.ts": "Custom hook using Intersection Observer API to detect when elements enter viewport for scroll reveal animations.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks file for backend data fetching operations, currently empty as booking form uses client-side Google Sheets integration via Google Apps Script.",
+  "frontend/src/index.css": "Global styles with OKLCH color system, custom Veda Healar colors (deep blue, gold, beige), serif/sans-serif typography, scroll reveal animations, and custom scrollbar styling.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom Veda Healar color palette (deepBlue, goldAccent, beigeBackground), Playfair Display serif font for headings, Inter sans-serif for body, and custom shadows."
+}
