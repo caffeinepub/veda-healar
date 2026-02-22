@@ -1,38 +1,47 @@
 {
   "kind": "build_request",
-  "title": "Update Google Apps Script webhook URL",
-  "projectName": "Veda Healar",
+  "title": "Update Instagram social media link",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the booking form submission endpoint to use the new Google Apps Script web app URL: https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec",
+      "text": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-12"
+          "msg-user-latest"
         ],
         "quotes": [
-          "here is the webapp url :- https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec"
+          "in insta use this:- https://www.instagram.com/vedahealar/"
         ]
       },
       "acceptanceCriteria": [
-        "The BookingForm component posts data to the new Google Apps Script URL",
-        "Form submission successfully sends booking data (name, email, phone, date, time, service) to the endpoint",
-        "Success and error responses from the Apps Script are handled appropriately"
+        "The Instagram icon in the Footer links to https://www.instagram.com/vedahealar/",
+        "The link opens in a new tab with appropriate security attributes"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "in insta use this:- https://www.instagram.com/vedahealar/"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Instagram icon in the Contact page links to https://www.instagram.com/vedahealar/",
+        "The link opens in a new tab with appropriate security attributes"
       ]
     }
   ],
-  "constraints": [
-    "Preserve existing form validation logic and UI",
-    "Maintain the current booking form fields (name, email, phone, date, time, service)",
-    "Keep existing success/error notification handling"
-  ],
+  "constraints": [],
   "nonGoals": [
-    "Changing the form layout or styling",
-    "Adding new form fields",
-    "Modifying the Google Apps Script code itself",
-    "Changing WhatsApp integration"
+    "Changing any other social media links",
+    "Modifying the styling or appearance of social media icons"
   ],
   "imageRequirements": {
     "required": [],

@@ -98,18 +98,24 @@ export default function Footer() {
           <div className="flex justify-center gap-6">
             <a
               href="#"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-goldAccent transition-all duration-300"
             >
               <SiFacebook className="w-6 h-6" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/vedahealar/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-goldAccent transition-all duration-300"
             >
               <SiInstagram className="w-6 h-6" />
             </a>
             <a
               href="#"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-goldAccent transition-all duration-300"
             >
               <SiYoutube className="w-6 h-6" />

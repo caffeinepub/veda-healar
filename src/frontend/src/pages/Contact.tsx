@@ -108,18 +108,24 @@ export default function Contact() {
                   <div className="flex gap-4">
                     <a
                       href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-goldAccent/10 rounded-full flex items-center justify-center hover:bg-goldAccent hover:text-white transition-all duration-300"
                     >
                       <SiFacebook className="w-5 h-5" />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.instagram.com/vedahealar/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-goldAccent/10 rounded-full flex items-center justify-center hover:bg-goldAccent hover:text-white transition-all duration-300"
                     >
                       <SiInstagram className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-goldAccent/10 rounded-full flex items-center justify-center hover:bg-goldAccent hover:text-white transition-all duration-300"
                     >
                       <SiYoutube className="w-5 h-5" />

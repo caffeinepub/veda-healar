@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-booking-form-submission-endpoint-to-use-the-new-google-apps-script-web-app-url-https-script-google-com-macros-s-akfycbynx8qzl8z7as3uaxulxylx62hnz4kx7pt32mqke9b1hszcgd0frgb2cicrvh7qqabvqq-exec",
-      "featureTitle": "Update the booking form submission endpoint to use the new Google Apps Script web app URL: https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec",
+      "featureId": "feature-update-the-instagram-social-media-link-in-the-footer-component-to-use-the-url-https-www-instagram-com-vedahealar",
+      "featureTitle": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
       "files": [
-        "frontend/src/components/BookingForm.tsx"
+        "frontend/src/components/Footer.tsx"
       ],
       "components": [
         "http-outcalls@3.0.0",
@@ -17,6 +17,25 @@
       ],
       "testIds": [
         "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-instagram-social-media-link-in-the-contact-page-to-use-the-url-https-www-instagram-com-vedahealar",
+      "featureTitle": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+      "files": [
+        "frontend/src/pages/Contact.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
       ],
       "confidence": "high"
     }

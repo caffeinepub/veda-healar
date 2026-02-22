@@ -1,27 +1,30 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "A booking form application that integrates with WhatsApp and Google Sheets via Apps Script to collect appointment data (name, email, phone, date, time, service)",
-  "architectural_notes": [
-    "Uses Google Apps Script as backend webhook to receive POST requests",
-    "Apps Script doPost function parses JSON and appends booking data to Google Sheet",
-    "Web app deployed with 'Execute as: Me' and 'Who has access: Anyone'",
-    "Data fields: timestamp, name, email, phone, date, time, service"
-  ],
+  "summary": "New project",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-booking-form-submission-endpoint-to-use-the-new-google-apps-script-web-app-url-https-script-google-com-macros-s-akfycbynx8qzl8z7as3uaxulxylx62hnz4kx7pt32mqke9b1hszcgd0frgb2cicrvh7qqabvqq-exec",
-      "title": "Update the booking form submission endpoint to use the new Google Apps Script web app URL: https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec",
+      "id": "feature-update-the-instagram-social-media-link-in-the-footer-component-to-use-the-url-https-www-instagram-com-vedahealar",
+      "title": "Update the Instagram social media link in the Footer component to use the URL https://www.instagram.com/vedahealar/",
       "reqIds": [
         "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-instagram-social-media-link-in-the-contact-page-to-use-the-url-https-www-instagram-com-vedahealar",
+      "title": "Update the Instagram social media link in the Contact page to use the URL https://www.instagram.com/vedahealar/",
+      "reqIds": [
+        "REQ-2"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [],
-  "projectName": "Veda Healar",
+  "projectName": "Update Instagram social media link",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

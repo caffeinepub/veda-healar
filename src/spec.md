@@ -1,11 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Update the booking form to submit data to the new Google Apps Script webhook URL.
+**Goal:** Update Instagram social media links to point to the correct profile.
 
 **Planned changes:**
-- Update the BookingForm component to POST booking data to the new Google Apps Script web app endpoint
-- Ensure form submission sends all booking fields (name, email, phone, date, time, service) to the new URL
-- Maintain existing success/error response handling
+- Update Instagram link in Footer component to https://www.instagram.com/vedahealar/
+- Update Instagram link in Contact page to https://www.instagram.com/vedahealar/
 
-**User-visible outcome:** Users can submit booking requests through the form, which will now be processed by the updated Google Apps Script webhook.
+**User-visible outcome:** Users can click the Instagram icon in the footer or contact page to visit the correct Instagram profile at https://www.instagram.com/vedahealar/.

@@ -1,14 +1,15 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T20:21:20.213Z",
-  "summary": "The diff shows that REQ-1 has been fully implemented. The BookingForm.tsx component now uses the new Google Apps Script URL for form submission, sends all required booking data fields (name, email, phone, date, time, service), and includes appropriate success/error handling. No missing requirements or hallucinated features detected.",
+  "generatedAt": "2026-02-22T20:30:30.714Z",
+  "summary": "Both requirements have been successfully implemented. The Instagram link has been updated to https://www.instagram.com/vedahealar/ in both the Footer component and the Contact page, with proper security attributes (target='_blank' and rel='noopener noreferrer').",
   "missing_requirements": [],
   "hallucinated_features": [],
   "confidence": 0.95,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/BookingForm.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/pages/Contact.tsx",
     "project_state.json"
   ]
 }
