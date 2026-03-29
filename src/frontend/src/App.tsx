@@ -1,16 +1,22 @@
-import { RouterProvider, createRouter, createRoute, createRootRoute, Outlet } from '@tanstack/react-router';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import BookConsultation from './pages/BookConsultation';
-import Testimonials from './pages/Testimonials';
-import Contact from './pages/Contact';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import VeduChatbot from './components/VeduChatbot';
-import { Toaster } from '@/components/ui/sonner';
-import { ThemeProvider } from 'next-themes';
+import { Toaster } from "@/components/ui/sonner";
+import {
+  Outlet,
+  RouterProvider,
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from "@tanstack/react-router";
+import { ThemeProvider } from "next-themes";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import VeduChatbot from "./components/VeduChatbot";
+import WhatsAppButton from "./components/WhatsAppButton";
+import About from "./pages/About";
+import BookConsultation from "./pages/BookConsultation";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Testimonials from "./pages/Testimonials";
 
 // Layout component with Navbar and Footer
 function Layout() {
@@ -35,37 +41,37 @@ const rootRoute = createRootRoute({
 // Create individual routes
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
   component: Home,
 });
 
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/about',
+  path: "/about",
   component: About,
 });
 
 const servicesRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/services',
+  path: "/services",
   component: Services,
 });
 
 const bookRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/book',
+  path: "/book",
   component: BookConsultation,
 });
 
 const testimonialsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/testimonials',
+  path: "/testimonials",
   component: Testimonials,
 });
 
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/contact',
+  path: "/contact",
   component: Contact,
 });
 
@@ -83,7 +89,7 @@ const routeTree = rootRoute.addChildren([
 const router = createRouter({ routeTree });
 
 // Register router for type safety
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from '@tanstack/react-router';
-import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from "@tanstack/react-router";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,16 +12,16 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/services', label: 'Services' },
-    { path: '/testimonials', label: 'Testimonials' },
-    { path: '/contact', label: 'Contact' },
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/services", label: "Services" },
+    { path: "/testimonials", label: "Testimonials" },
+    { path: "/contact", label: "Contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
+        isScrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -41,7 +41,10 @@ export default function Navbar() {
               alt="Veda Healar"
               className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="font-serif text-2xl font-bold text-deepBlue">
+            <span
+              className="text-2xl font-bold text-deepBlue"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
+            >
               Veda Healar
             </span>
           </Link>
@@ -54,9 +57,10 @@ export default function Navbar() {
                 to={link.path}
                 className={`font-medium transition-colors duration-300 relative ${
                   isActive(link.path)
-                    ? 'text-goldAccent'
-                    : 'text-gray-700 hover:text-goldAccent'
+                    ? "text-goldAccent"
+                    : "text-gray-700 hover:text-goldAccent"
                 }`}
+                data-ocid={`nav.${link.label.toLowerCase()}.link`}
               >
                 {link.label}
                 {isActive(link.path) && (
@@ -67,6 +71,8 @@ export default function Navbar() {
             <Link
               to="/book"
               className="bg-goldAccent text-white px-6 py-2 rounded-lg font-semibold hover:bg-goldAccent/90 transition-all duration-300 hover:scale-105 shadow-md"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
+              data-ocid="nav.book.button"
             >
               Book Now
             </Link>
@@ -74,6 +80,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-deepBlue hover:text-goldAccent transition-colors"
           >
@@ -93,8 +100,8 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block py-2 font-medium transition-colors ${
                   isActive(link.path)
-                    ? 'text-goldAccent'
-                    : 'text-gray-700 hover:text-goldAccent'
+                    ? "text-goldAccent"
+                    : "text-gray-700 hover:text-goldAccent"
                 }`}
               >
                 {link.label}
@@ -104,6 +111,7 @@ export default function Navbar() {
               to="/book"
               onClick={() => setIsMobileMenuOpen(false)}
               className="block bg-goldAccent text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-goldAccent/90 transition-all duration-300 shadow-md"
+              style={{ fontFamily: "'Roboto', sans-serif" }}
             >
               Book Now
             </Link>

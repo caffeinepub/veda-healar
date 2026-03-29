@@ -1,13 +1,13 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useActor } from './useActor';
-import type { VeduMessage } from '../backend';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import type { VeduMessage } from "../backend";
+import { useActor } from "./useActor";
 
 // Vedu Chat Queries
 export function useVeduData() {
   const { actor, isFetching } = useActor();
 
   return useQuery({
-    queryKey: ['veduData'],
+    queryKey: ["veduData"],
     queryFn: async () => {
       if (!actor) return null;
       return actor.getVeduData();
@@ -20,7 +20,7 @@ export function useGetMessage(messageId: bigint) {
   const { actor, isFetching } = useActor();
 
   return useQuery({
-    queryKey: ['veduMessage', messageId.toString()],
+    queryKey: ["veduMessage", messageId.toString()],
     queryFn: async () => {
       if (!actor) return null;
       return actor.getMessage(messageId);
@@ -33,7 +33,7 @@ export function useGetAllMessages() {
   const { actor, isFetching } = useActor();
 
   return useQuery<VeduMessage[]>({
-    queryKey: ['veduMessages'],
+    queryKey: ["veduMessages"],
     queryFn: async () => {
       if (!actor) return [];
       return actor.getAllMessages();
@@ -49,36 +49,39 @@ export function useVeduQueries() {
 
   const startBookingSession = useMutation({
     mutationFn: async (userId: string) => {
-      if (!actor) throw new Error('Actor not initialized');
+      if (!actor) throw new Error("Actor not initialized");
       return actor.startBookingSession(userId);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['veduData'] });
+      queryClient.invalidateQueries({ queryKey: ["veduData"] });
     },
   });
 
   const processBookingResponse = useMutation({
-    mutationFn: async ({ userId, response }: { userId: string; response: string }) => {
-      if (!actor) throw new Error('Actor not initialized');
+    mutationFn: async ({
+      userId,
+      response,
+    }: { userId: string; response: string }) => {
+      if (!actor) throw new Error("Actor not initialized");
       return actor.processBookingResponse(userId, response);
     },
   });
 
   const submitBooking = useMutation({
     mutationFn: async (formData: string[]) => {
-      if (!actor) throw new Error('Actor not initialized');
+      if (!actor) throw new Error("Actor not initialized");
       return actor.submitBooking(formData);
     },
   });
 
   const initializeMessages = useMutation({
     mutationFn: async () => {
-      if (!actor) throw new Error('Actor not initialized');
+      if (!actor) throw new Error("Actor not initialized");
       return actor.initializeMessages();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['veduMessages'] });
-      queryClient.invalidateQueries({ queryKey: ['veduData'] });
+      queryClient.invalidateQueries({ queryKey: ["veduMessages"] });
+      queryClient.invalidateQueries({ queryKey: ["veduData"] });
     },
   });
 

@@ -1,83 +1,73 @@
-import { Link } from '@tanstack/react-router';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Sparkles, Heart, Star } from 'lucide-react';
+import { Check } from "lucide-react";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export default function AboutIntro() {
   const { ref, isVisible } = useScrollReveal();
+
+  const checklistItems = [
+    "Numerology & predictive analysis",
+    "Name, number & object alignment",
+    "Energy, sound & trauma healing",
+    "Vedic switch words and intention work",
+  ];
 
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div
           ref={ref}
-          className={`max-w-5xl mx-auto transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`max-w-6xl mx-auto transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-deepBlue mb-6">
-                Ancient Wisdom for Modern Souls
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                At Veda Healar, we bridge the timeless wisdom of Vedic traditions with contemporary 
-                spiritual needs. Our practice is rooted in the sacred science of numerology, energy 
-                healing, and cosmic alignment.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                Through personalized consultations, we help you decode the vibrational patterns that 
-                shape your destiny, guiding you toward clarity, purpose, and transformation.
-              </p>
-              <Link
-                to="/about"
-                className="inline-block bg-goldAccent text-white px-8 py-3 rounded-lg font-semibold hover:bg-goldAccent/90 transition-all duration-300 hover:scale-105 shadow-lg"
-              >
-                Learn More About Us
-              </Link>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Left: Portrait Image */}
+            <div className="flex justify-center md:justify-start">
+              <img
+                src="/assets/generated/spiritual-healer-portrait.dim_600x800.jpg"
+                alt="Spiritual Healer"
+                className="w-full max-w-md object-cover rounded-lg shadow-2xl"
+              />
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 bg-beigeBackground p-6 rounded-lg">
-                <div className="w-12 h-12 bg-goldAccent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="w-6 h-6 text-goldAccent" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-deepBlue mb-2">
-                    Authentic Vedic Practice
-                  </h3>
-                  <p className="text-gray-700">
-                    Rooted in ancient traditions, adapted for modern seekers
-                  </p>
-                </div>
-              </div>
+            {/* Right: Philosophy Content */}
+            <div className="flex flex-col justify-center">
+              <h3
+                className="text-3xl md:text-4xl font-bold text-deepBlue mb-6"
+                style={{ fontFamily: "'Roboto Slab', serif" }}
+              >
+                Our Core Philosophy
+              </h3>
 
-              <div className="flex items-start gap-4 bg-beigeBackground p-6 rounded-lg">
-                <div className="w-12 h-12 bg-goldAccent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Heart className="w-6 h-6 text-goldAccent" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-deepBlue mb-2">
-                    Personalized Guidance
-                  </h3>
-                  <p className="text-gray-700">
-                    Every consultation is tailored to your unique spiritual journey
-                  </p>
-                </div>
-              </div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Everything in the universe vibrates with energy — numbers,
+                names, sounds, objects, and even emotions. When these energies
+                are aligned, life flows with ease.
+              </p>
 
-              <div className="flex items-start gap-4 bg-beigeBackground p-6 rounded-lg">
-                <div className="w-12 h-12 bg-goldAccent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Star className="w-6 h-6 text-goldAccent" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-deepBlue mb-2">
-                    Proven Results
-                  </h3>
-                  <p className="text-gray-700">
-                    Hundreds of satisfied clients experiencing positive transformation
-                  </p>
-                </div>
-              </div>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                At VedaHealer, we identify energetic imbalances and correct them
+                through:
+              </p>
+
+              <ul className="space-y-3 mb-6">
+                {checklistItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ backgroundColor: "#E6B65C" }}
+                    >
+                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="text-gray-700 leading-relaxed">
+                Our goal is not fear-based prediction, but clarity, empowerment,
+                and conscious transformation.
+              </p>
             </div>
           </div>
         </div>

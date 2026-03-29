@@ -18,7 +18,7 @@ export default {
             colors: {
                 // Custom Veda Healar color palette
                 deepBlue: '#0B1C2D',
-                goldAccent: '#D4AF37',
+                goldAccent: '#E6B65C',
                 beigeBackground: '#F5F0E6',
                 
                 // Shadcn UI tokens
@@ -64,8 +64,9 @@ export default {
                 }
             },
             fontFamily: {
-                serif: ['Playfair Display', 'Georgia', 'serif'],
-                sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                serif: ['Roboto Slab', 'serif'],
+                sans: ['Poppins', 'sans-serif'],
+                roboto: ['Roboto', 'sans-serif'],
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -74,7 +75,7 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                glow: '0 0 20px rgba(212, 175, 55, 0.3)',
+                glow: '0 0 20px rgba(230, 182, 92, 0.3)',
             },
             keyframes: {
                 'accordion-down': {

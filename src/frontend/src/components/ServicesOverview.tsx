@@ -1,36 +1,41 @@
-import { Link } from '@tanstack/react-router';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Link } from "@tanstack/react-router";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const services = [
   {
-    id: 'numerology',
-    name: 'Numerology Reading',
-    icon: '/assets/generated/service-numerology.dim_256x256.png',
-    description: 'Decode the cosmic vibrations in your birth date and name to reveal your life path and destiny.',
+    id: "numerology",
+    name: "Numerology Reading",
+    icon: "/assets/generated/service-numerology.dim_256x256.png",
+    description:
+      "Decode the cosmic vibrations in your birth date and name to reveal your life path and destiny.",
   },
   {
-    id: 'name-correction',
-    name: 'Name Correction',
-    icon: '/assets/generated/service-name.dim_256x256.png',
-    description: 'Align your name with favorable energies to attract success and prosperity.',
+    id: "name-correction",
+    name: "Name Correction",
+    icon: "/assets/generated/service-name.dim_256x256.png",
+    description:
+      "Align your name with favorable energies to attract success and prosperity.",
   },
   {
-    id: 'lucky-number',
-    name: 'Lucky Number Selection',
-    icon: '/assets/generated/service-lucky.dim_256x256.png',
-    description: 'Discover your personal lucky numbers for important decisions and ventures.',
+    id: "lucky-number",
+    name: "Lucky Number Selection",
+    icon: "/assets/generated/service-lucky.dim_256x256.png",
+    description:
+      "Discover your personal lucky numbers for important decisions and ventures.",
   },
   {
-    id: 'reiki-healing',
-    name: 'Reiki & Energy Healing',
-    icon: '/assets/generated/service-reiki.dim_256x256.png',
-    description: 'Experience transformative energy healing to restore balance and harmony.',
+    id: "reiki-healing",
+    name: "Reiki & Energy Healing",
+    icon: "/assets/generated/service-reiki.dim_256x256.png",
+    description:
+      "Experience transformative energy healing to restore balance and harmony.",
   },
   {
-    id: 'business-name',
-    name: 'Business Name Analysis',
-    icon: '/assets/generated/service-business.dim_256x256.png',
-    description: 'Choose a business name that resonates with success and abundance.',
+    id: "business-name",
+    name: "Business Name Analysis",
+    icon: "/assets/generated/service-business.dim_256x256.png",
+    description:
+      "Choose a business name that resonates with success and abundance.",
   },
 ];
 
@@ -43,10 +48,15 @@ export default function ServicesOverview() {
         <div
           ref={headerRef}
           className={`text-center mb-16 transition-all duration-1000 ${
-            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            headerVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-deepBlue mb-4">
+          <h2
+            className="text-4xl md:text-5xl font-bold text-deepBlue mb-4"
+            style={{ fontFamily: "'Roboto', sans-serif" }}
+          >
             Our Services
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
@@ -64,6 +74,7 @@ export default function ServicesOverview() {
           <Link
             to="/services"
             className="inline-block bg-goldAccent text-white px-8 py-3 rounded-lg font-semibold hover:bg-goldAccent/90 transition-all duration-300 hover:scale-105 shadow-lg"
+            style={{ fontFamily: "'Roboto', sans-serif" }}
           >
             View All Services
           </Link>
@@ -90,14 +101,17 @@ function ServiceCard({
     <div
       ref={ref}
       className={`bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-500 hover:scale-105 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-goldAccent/10 p-3 flex items-center justify-center">
         <img src={icon} alt={name} className="w-full h-full object-contain" />
       </div>
-      <h3 className="font-serif text-xl font-bold text-deepBlue text-center mb-3">
+      <h3
+        className="text-xl font-bold text-deepBlue text-center mb-3"
+        style={{ fontFamily: "'Roboto', sans-serif" }}
+      >
         {name}
       </h3>
       <p className="text-gray-700 text-center leading-relaxed text-sm">

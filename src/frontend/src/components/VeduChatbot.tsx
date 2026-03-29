@@ -1,21 +1,21 @@
-import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
-import { useVeduChat } from '@/hooks/useVeduChat';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useVeduChat } from "@/hooks/useVeduChat";
+import { Loader2, Send, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 interface Message {
   id: string;
   text: string;
-  sender: 'user' | 'vedu';
+  sender: "user" | "vedu";
   timestamp: Date;
 }
 
 export default function VeduChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [hasGreeted, setHasGreeted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -25,7 +25,7 @@ export default function VeduChatbot() {
       const botMessage: Message = {
         id: Date.now().toString(),
         text: response,
-        sender: 'vedu',
+        sender: "vedu",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
@@ -36,9 +36,9 @@ export default function VeduChatbot() {
   useEffect(() => {
     if (isOpen && !hasGreeted) {
       const greetingMessage: Message = {
-        id: 'greeting',
+        id: "greeting",
         text: "Welcome to Vedahealar! I'm Vedu, your personal guide. I can help you learn about our services including Numerology, Name Correction, Lucky Numbers, Reiki Healing, and Business Name Analysis. I can also assist you in booking an appointment. How can I help you today?",
-        sender: 'vedu',
+        sender: "vedu",
         timestamp: new Date(),
       };
       setMessages([greetingMessage]);
@@ -47,8 +47,9 @@ export default function VeduChatbot() {
   }, [isOpen, hasGreeted]);
 
   // Auto-scroll to bottom when new messages arrive
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scroll on message change is intentional
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   // Focus input when chat opens
@@ -64,27 +65,27 @@ export default function VeduChatbot() {
     const userMessage: Message = {
       id: Date.now().toString(),
       text: inputValue,
-      sender: 'user',
+      sender: "user",
       timestamp: new Date(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInputValue('');
+    setInputValue("");
 
     await sendMessage(inputValue);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
   };
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
+    return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
       hour12: true,
     });
   };
@@ -94,14 +95,19 @@ export default function VeduChatbot() {
       {/* Chat Bubble Icon */}
       {!isOpen && (
         <button
+          type="button"
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 left-6 z-50 w-16 h-16 bg-deepBlue rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 hover:shadow-deepBlue/50 group"
+          className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 group overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #0E1B2A 0%, #1A3A5A 100%)",
+            border: "2px solid #E6B65C",
+          }}
           aria-label="Open Vedu chat assistant"
         >
           <img
-            src="/assets/generated/vedu-avatar.dim_64x64.png"
+            src="/assets/generated/vedu-bot-icon-transparent.dim_128x128.png"
             alt="Vedu"
-            className="w-12 h-12 rounded-full object-cover group-hover:scale-110 transition-transform"
+            className="w-12 h-12 object-contain group-hover:scale-110 transition-transform"
           />
         </button>
       )}
@@ -112,17 +118,26 @@ export default function VeduChatbot() {
           {/* Header */}
           <div className="bg-deepBlue text-white px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img
-                src="/assets/generated/vedu-avatar.dim_64x64.png"
-                alt="Vedu"
-                className="w-10 h-10 rounded-full object-cover border-2 border-goldAccent"
-              />
+              <div
+                className="w-10 h-10 rounded-full overflow-hidden border-2 border-goldAccent flex items-center justify-center"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #0E1B2A 0%, #1A3A5A 100%)",
+                }}
+              >
+                <img
+                  src="/assets/generated/vedu-bot-icon-transparent.dim_128x128.png"
+                  alt="Vedu"
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
               <div>
                 <h3 className="font-serif font-bold text-lg">Vedu</h3>
                 <p className="text-xs text-goldAccent">Your Vedic Guide</p>
               </div>
             </div>
             <button
+              type="button"
               onClick={() => setIsOpen(false)}
               className="text-white hover:text-goldAccent transition-colors"
               aria-label="Close chat"
@@ -137,19 +152,23 @@ export default function VeduChatbot() {
               {messages.map((message) => (
                 <div
                   key={message.id}
-                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                      message.sender === 'user'
-                        ? 'bg-deepBlue text-white rounded-br-none'
-                        : 'bg-white text-deepBlue border border-gray-200 rounded-bl-none'
+                      message.sender === "user"
+                        ? "bg-deepBlue text-white rounded-br-none"
+                        : "bg-white text-deepBlue border border-gray-200 rounded-bl-none"
                     }`}
                   >
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                    <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                      {message.text}
+                    </p>
                     <p
                       className={`text-xs mt-1 ${
-                        message.sender === 'user' ? 'text-goldAccent' : 'text-gray-500'
+                        message.sender === "user"
+                          ? "text-goldAccent"
+                          : "text-gray-500"
                       }`}
                     >
                       {formatTime(message.timestamp)}

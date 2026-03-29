@@ -1,4 +1,4 @@
-import { CreditCard, Shield } from 'lucide-react';
+import { CreditCard, Shield } from "lucide-react";
 
 export default function PaymentPlaceholder() {
   return (
@@ -14,13 +14,15 @@ export default function PaymentPlaceholder() {
 
       <div className="bg-beigeBackground p-6 rounded-lg mb-6">
         <p className="text-gray-700 leading-relaxed mb-4">
-          Payment details will be shared after we confirm your consultation appointment. 
-          We accept multiple payment methods for your convenience:
+          Payment details will be shared after we confirm your consultation
+          appointment. We accept multiple payment methods for your convenience:
         </p>
         <div className="flex flex-wrap gap-4 items-center justify-center">
           <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
             <CreditCard className="w-5 h-5 text-goldAccent" />
-            <span className="text-sm font-semibold text-deepBlue">Razorpay</span>
+            <span className="text-sm font-semibold text-deepBlue">
+              Razorpay
+            </span>
           </div>
           <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
             <CreditCard className="w-5 h-5 text-goldAccent" />
@@ -32,7 +34,9 @@ export default function PaymentPlaceholder() {
           </div>
           <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
             <CreditCard className="w-5 h-5 text-goldAccent" />
-            <span className="text-sm font-semibold text-deepBlue">Bank Transfer</span>
+            <span className="text-sm font-semibold text-deepBlue">
+              Bank Transfer
+            </span>
           </div>
         </div>
       </div>

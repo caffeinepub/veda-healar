@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { toast } from 'sonner';
-import { Loader2 } from 'lucide-react';
+import { useMutation } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 interface BookingFormProps {
   onSuccess: () => void;
@@ -27,35 +27,36 @@ interface FormErrors {
 }
 
 const services = [
-  { id: 'numerology', name: 'Numerology Reading' },
-  { id: 'name-correction', name: 'Name Correction' },
-  { id: 'lucky-number', name: 'Lucky Number Selection' },
-  { id: 'reiki-healing', name: 'Reiki & Energy Healing' },
-  { id: 'business-name', name: 'Business Name Analysis' },
+  { id: "numerology", name: "Numerology Reading" },
+  { id: "name-correction", name: "Name Correction" },
+  { id: "lucky-number", name: "Lucky Number Selection" },
+  { id: "reiki-healing", name: "Reiki & Energy Healing" },
+  { id: "business-name", name: "Business Name Analysis" },
 ];
 
 export default function BookingForm({ onSuccess }: BookingFormProps) {
   const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    email: '',
-    phone: '',
-    preferredDate: '',
-    preferredTime: '',
-    service: '',
-    message: '',
+    fullName: "",
+    email: "",
+    phone: "",
+    preferredDate: "",
+    preferredTime: "",
+    service: "",
+    message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
   const submitMutation = useMutation({
     mutationFn: async (data: FormData) => {
       // Google Apps Script Web App URL
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec';
-      
-      const response = await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors', // Required for Google Apps Script
+      const scriptUrl =
+        "https://script.google.com/macros/s/AKfycbyNX8QzL8z7as3uaxUlXylX62hNZ4kx7Pt32mQKe9b1HSZCgD0fRgb2CicRVH7qQabvQQ/exec";
+
+      const _response = await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors", // Required for Google Apps Script
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: data.fullName,
@@ -74,21 +75,25 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
       return { success: true };
     },
     onSuccess: () => {
-      toast.success('Booking request submitted successfully! We will contact you soon.');
+      toast.success(
+        "Booking request submitted successfully! We will contact you soon.",
+      );
       setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        preferredDate: '',
-        preferredTime: '',
-        service: '',
-        message: '',
+        fullName: "",
+        email: "",
+        phone: "",
+        preferredDate: "",
+        preferredTime: "",
+        service: "",
+        message: "",
       });
       onSuccess();
     },
     onError: (error) => {
-      console.error('Submission error:', error);
-      toast.error('Failed to submit booking. Please try contacting us via WhatsApp.');
+      console.error("Submission error:", error);
+      toast.error(
+        "Failed to submit booking. Please try contacting us via WhatsApp.",
+      );
     },
   });
 
@@ -96,40 +101,40 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     const newErrors: FormErrors = {};
 
     if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
+      newErrors.fullName = "Full name is required";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = "Please enter a valid email address";
     }
 
     const phoneRegex = /^\d{10}$/;
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
-      newErrors.phone = 'Please enter a valid 10-digit phone number';
+      newErrors.phone = "Phone number is required";
+    } else if (!phoneRegex.test(formData.phone.replace(/\D/g, ""))) {
+      newErrors.phone = "Please enter a valid 10-digit phone number";
     }
 
     if (!formData.preferredDate) {
-      newErrors.preferredDate = 'Preferred date is required';
+      newErrors.preferredDate = "Preferred date is required";
     } else {
       const selectedDate = new Date(formData.preferredDate);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       if (selectedDate < today) {
-        newErrors.preferredDate = 'Please select a future date';
+        newErrors.preferredDate = "Please select a future date";
       }
     }
 
     if (!formData.preferredTime) {
-      newErrors.preferredTime = 'Preferred time is required';
+      newErrors.preferredTime = "Preferred time is required";
     }
 
     if (!formData.service) {
-      newErrors.service = 'Please select a service';
+      newErrors.service = "Please select a service";
     }
 
     setErrors(newErrors);
@@ -144,7 +149,9 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -158,7 +165,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Full Name */}
       <div>
-        <label htmlFor="fullName" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="fullName"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Full Name *
         </label>
         <input
@@ -168,7 +178,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           value={formData.fullName}
           onChange={handleChange}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
-            errors.fullName ? 'border-red-500' : 'border-gray-300'
+            errors.fullName ? "border-red-500" : "border-gray-300"
           }`}
           placeholder="Enter your full name"
         />
@@ -179,7 +189,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
       {/* Email */}
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="email"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Email Address *
         </label>
         <input
@@ -189,16 +202,21 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           value={formData.email}
           onChange={handleChange}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
-            errors.email ? 'border-red-500' : 'border-gray-300'
+            errors.email ? "border-red-500" : "border-gray-300"
           }`}
           placeholder="your@email.com"
         />
-        {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+        )}
       </div>
 
       {/* Phone */}
       <div>
-        <label htmlFor="phone" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="phone"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Phone Number *
         </label>
         <input
@@ -208,16 +226,21 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           value={formData.phone}
           onChange={handleChange}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
-            errors.phone ? 'border-red-500' : 'border-gray-300'
+            errors.phone ? "border-red-500" : "border-gray-300"
           }`}
           placeholder="10-digit phone number"
         />
-        {errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
+        {errors.phone && (
+          <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+        )}
       </div>
 
       {/* Preferred Date */}
       <div>
-        <label htmlFor="preferredDate" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="preferredDate"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Preferred Consultation Date *
         </label>
         <input
@@ -226,9 +249,9 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           name="preferredDate"
           value={formData.preferredDate}
           onChange={handleChange}
-          min={new Date().toISOString().split('T')[0]}
+          min={new Date().toISOString().split("T")[0]}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
-            errors.preferredDate ? 'border-red-500' : 'border-gray-300'
+            errors.preferredDate ? "border-red-500" : "border-gray-300"
           }`}
         />
         {errors.preferredDate && (
@@ -238,7 +261,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
       {/* Preferred Time */}
       <div>
-        <label htmlFor="preferredTime" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="preferredTime"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Preferred Consultation Time *
         </label>
         <input
@@ -248,7 +274,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           value={formData.preferredTime}
           onChange={handleChange}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
-            errors.preferredTime ? 'border-red-500' : 'border-gray-300'
+            errors.preferredTime ? "border-red-500" : "border-gray-300"
           }`}
         />
         {errors.preferredTime && (
@@ -258,7 +284,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
       {/* Service Selection */}
       <div>
-        <label htmlFor="service" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="service"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Select Service *
         </label>
         <select
@@ -267,7 +296,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           value={formData.service}
           onChange={handleChange}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-goldAccent focus:border-transparent ${
-            errors.service ? 'border-red-500' : 'border-gray-300'
+            errors.service ? "border-red-500" : "border-gray-300"
           }`}
         >
           <option value="">Choose a service...</option>
@@ -277,12 +306,17 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             </option>
           ))}
         </select>
-        {errors.service && <p className="mt-1 text-sm text-red-500">{errors.service}</p>}
+        {errors.service && (
+          <p className="mt-1 text-sm text-red-500">{errors.service}</p>
+        )}
       </div>
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-deepBlue mb-2">
+        <label
+          htmlFor="message"
+          className="block text-sm font-semibold text-deepBlue mb-2"
+        >
           Additional Message (Optional)
         </label>
         <textarea
@@ -308,12 +342,13 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             Submitting...
           </>
         ) : (
-          'Book Consultation'
+          "Book Consultation"
         )}
       </button>
 
       <p className="text-sm text-gray-600 text-center">
-        By submitting this form, you agree to be contacted regarding your consultation request.
+        By submitting this form, you agree to be contacted regarding your
+        consultation request.
       </p>
     </form>
   );

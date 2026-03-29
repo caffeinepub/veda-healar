@@ -1,5 +1,5 @@
-import { Link } from '@tanstack/react-router';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Link } from "@tanstack/react-router";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 interface ServiceCardProps {
   id: string;
@@ -24,14 +24,17 @@ export default function ServiceCard({
     <div
       ref={ref}
       className={`bg-white rounded-lg shadow-lg p-8 hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-goldAccent/10 p-4 flex items-center justify-center">
         <img src={icon} alt={name} className="w-full h-full object-contain" />
       </div>
-      <h3 className="font-serif text-2xl font-bold text-deepBlue text-center mb-4">
+      <h3
+        className="text-2xl font-bold text-deepBlue text-center mb-4"
+        style={{ fontFamily: "'Roboto', sans-serif" }}
+      >
         {name}
       </h3>
       <p className="text-gray-700 text-center leading-relaxed mb-6">
@@ -44,6 +47,7 @@ export default function ServiceCard({
         to="/book"
         search={{ service: id }}
         className="block w-full bg-goldAccent text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-goldAccent/90 transition-all duration-300 hover:scale-105 shadow-md"
+        style={{ fontFamily: "'Roboto', sans-serif" }}
       >
         Book Now
       </Link>
