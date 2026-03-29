@@ -1,41 +1,27 @@
 import { Link } from "@tanstack/react-router";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const services = [
+const categories = [
   {
-    id: "numerology",
-    name: "Numerology Reading",
-    icon: "/assets/generated/service-numerology.dim_256x256.png",
-    description:
-      "Decode the cosmic vibrations in your birth date and name to reveal your life path and destiny.",
-  },
-  {
-    id: "name-correction",
-    name: "Name Correction",
-    icon: "/assets/generated/service-name.dim_256x256.png",
-    description:
-      "Align your name with favorable energies to attract success and prosperity.",
-  },
-  {
-    id: "lucky-number",
-    name: "Lucky Number Selection",
-    icon: "/assets/generated/service-lucky.dim_256x256.png",
-    description:
-      "Discover your personal lucky numbers for important decisions and ventures.",
-  },
-  {
-    id: "reiki-healing",
-    name: "Reiki & Energy Healing",
+    id: "healing-services",
+    name: "Healing Services",
     icon: "/assets/generated/service-reiki.dim_256x256.png",
     description:
-      "Experience transformative energy healing to restore balance and harmony.",
+      "Restore balance and harmony through powerful energy healing and Vedic healing traditions.",
   },
   {
-    id: "business-name",
-    name: "Business Name Analysis",
+    id: "numerology-services",
+    name: "Numerology Services",
+    icon: "/assets/generated/service-numerology.dim_256x256.png",
+    description:
+      "Unlock the cosmic blueprint of your life through the science of numbers.",
+  },
+  {
+    id: "customized-services",
+    name: "Customized Services",
     icon: "/assets/generated/service-business.dim_256x256.png",
     description:
-      "Choose a business name that resonates with success and abundance.",
+      "Personalized consultations combining healing and numerology tailored to your unique needs.",
   },
 ];
 
@@ -64,9 +50,9 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} {...service} delay={index * 100} />
+        <div className="grid sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {categories.map((cat, index) => (
+            <ServiceCard key={cat.id} {...cat} delay={index * 100} />
           ))}
         </div>
 
@@ -85,11 +71,13 @@ export default function ServicesOverview() {
 }
 
 function ServiceCard({
+  id,
   icon,
   name,
   description,
   delay,
 }: {
+  id: string;
   icon: string;
   name: string;
   description: string;
@@ -100,7 +88,7 @@ function ServiceCard({
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-500 hover:scale-105 ${
+      className={`bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-500 hover:scale-105 flex flex-col ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
@@ -114,9 +102,18 @@ function ServiceCard({
       >
         {name}
       </h3>
-      <p className="text-gray-700 text-center leading-relaxed text-sm">
+      <p className="text-gray-700 text-center leading-relaxed text-sm flex-1 mb-4">
         {description}
       </p>
+      <Link
+        to="/services/$categoryId"
+        params={{ categoryId: id }}
+        data-ocid={`services.${id}.button`}
+        className="block text-center bg-goldAccent text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-goldAccent/90 transition-all duration-300 hover:scale-105 shadow"
+        style={{ fontFamily: "'Roboto', sans-serif" }}
+      >
+        View All {name}
+      </Link>
     </div>
   );
 }

@@ -38,14 +38,14 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src="/assets/generated/logo.dim_400x400.png"
-              alt="Veda Healar"
+              alt="VedaHealar"
               className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-110"
             />
             <span
-              className="text-2xl font-bold text-deepBlue"
+              className="text-2xl font-bold text-yellow-400"
               style={{ fontFamily: "'Roboto', sans-serif" }}
             >
-              Veda Healar
+              VedaHealar
             </span>
           </Link>
 

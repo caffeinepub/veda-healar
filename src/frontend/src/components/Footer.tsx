@@ -15,10 +15,10 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <span
-                className="text-2xl font-bold text-goldAccent"
+                className="text-2xl font-bold text-yellow-400"
                 style={{ fontFamily: "'Roboto', sans-serif" }}
               >
-                Veda Healar
+                VedaHealar
               </span>
             </div>
             <p className="text-beigeBackground/80 leading-relaxed">
@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-beigeBackground/70">
-            <p>© {currentYear} Veda Healar. All rights reserved.</p>
+            <p>© {currentYear} VedaHealar. All rights reserved.</p>
             <p className="flex items-center gap-2">
               Built with{" "}
               <Heart className="w-4 h-4 text-goldAccent fill-goldAccent" />{" "}

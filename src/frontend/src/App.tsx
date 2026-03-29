@@ -15,6 +15,7 @@ import About from "./pages/About";
 import BookConsultation from "./pages/BookConsultation";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import ServiceCategoryDetail from "./pages/ServiceCategoryDetail";
 import Services from "./pages/Services";
 import Testimonials from "./pages/Testimonials";
 
@@ -57,6 +58,15 @@ const servicesRoute = createRoute({
   component: Services,
 });
 
+const servicesCategoryRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/services/$categoryId",
+  component: function ServicesCategoryPage() {
+    const { categoryId } = servicesCategoryRoute.useParams();
+    return <ServiceCategoryDetail categoryId={categoryId} />;
+  },
+});
+
 const bookRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/book",
@@ -80,6 +90,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   servicesRoute,
+  servicesCategoryRoute,
   bookRoute,
   testimonialsRoute,
   contactRoute,

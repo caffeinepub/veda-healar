@@ -1,47 +1,27 @@
 import { Link } from "@tanstack/react-router";
-import ServiceCard from "../components/ServiceCard";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const services = [
+const categories = [
   {
-    id: "numerology",
-    name: "Numerology Reading",
-    icon: "/assets/generated/service-numerology.dim_256x256.png",
-    description:
-      "Discover the hidden meanings behind your birth date and life path number. Our comprehensive numerology reading reveals your strengths, challenges, and destiny patterns encoded in the cosmic vibrations of numbers.",
-    price: "Starting from ₹2,999",
-  },
-  {
-    id: "name-correction",
-    name: "Name Correction",
-    icon: "/assets/generated/service-name.dim_256x256.png",
-    description:
-      "Align your name with favorable cosmic vibrations. Through precise numerological analysis, we suggest optimal name spellings that attract success, prosperity, and positive energy into your life.",
-    price: "Starting from ₹3,999",
-  },
-  {
-    id: "lucky-number",
-    name: "Lucky Number Selection",
-    icon: "/assets/generated/service-lucky.dim_256x256.png",
-    description:
-      "Identify your personal lucky numbers for important decisions, dates, and ventures. These numbers resonate with your unique energy signature and can enhance success in various life areas.",
-    price: "Starting from ₹1,999",
-  },
-  {
-    id: "reiki-healing",
-    name: "Reiki & Energy Healing",
+    id: "healing-services",
+    name: "Healing Services",
     icon: "/assets/generated/service-reiki.dim_256x256.png",
     description:
-      "Experience the transformative power of universal life force energy. Our Reiki sessions clear energy blockages, promote deep relaxation, and restore balance to your mind, body, and spirit.",
-    price: "Starting from ₹2,499",
+      "Experience transformative healing that restores balance to your mind, body, and spirit through powerful energy work and Vedic healing traditions.",
   },
   {
-    id: "business-name",
-    name: "Business Name Analysis",
+    id: "numerology-services",
+    name: "Numerology Services",
+    icon: "/assets/generated/service-numerology.dim_256x256.png",
+    description:
+      "Discover the hidden meanings in your numbers — from your birth date to your name — and unlock the cosmic blueprint of your life's journey.",
+  },
+  {
+    id: "customized-services",
+    name: "Customized Services",
     icon: "/assets/generated/service-business.dim_256x256.png",
     description:
-      "Choose a business name that vibrates with success and prosperity. We analyze numerological compatibility to ensure your business name attracts abundance, customers, and positive opportunities.",
-    price: "Starting from ₹4,999",
+      "Personalized consultations tailored specifically to your unique needs, combining multiple healing and numerology modalities for a holistic approach.",
   },
 ];
 
@@ -78,9 +58,9 @@ export default function Services() {
       {/* Services Grid */}
       <section className="py-16 bg-beigeBackground">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {services.map((service, index) => (
-              <ServiceCard key={service.id} {...service} delay={index * 100} />
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {categories.map((cat, index) => (
+              <CategoryCard key={cat.id} {...cat} delay={index * 100} />
             ))}
           </div>
         </div>
@@ -110,6 +90,54 @@ export default function Services() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function CategoryCard({
+  id,
+  icon,
+  name,
+  description,
+  delay,
+}: {
+  id: string;
+  icon: string;
+  name: string;
+  description: string;
+  delay: number;
+}) {
+  const { ref, isVisible } = useScrollReveal();
+
+  return (
+    <div
+      ref={ref}
+      className={`bg-white rounded-lg shadow-lg p-8 hover:shadow-2xl transition-all duration-500 hover:scale-105 flex flex-col ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-goldAccent/10 p-4 flex items-center justify-center">
+        <img src={icon} alt={name} className="w-full h-full object-contain" />
+      </div>
+      <h3
+        className="text-2xl font-bold text-deepBlue text-center mb-4"
+        style={{ fontFamily: "'Roboto', sans-serif" }}
+      >
+        {name}
+      </h3>
+      <p className="text-gray-700 text-center leading-relaxed flex-1 mb-6">
+        {description}
+      </p>
+      <Link
+        to="/services/$categoryId"
+        params={{ categoryId: id }}
+        data-ocid={`services.${id}.button`}
+        className="block text-center bg-goldAccent text-white px-5 py-2 rounded-lg font-semibold hover:bg-goldAccent/90 transition-all duration-300 hover:scale-105 shadow"
+        style={{ fontFamily: "'Roboto', sans-serif" }}
+      >
+        View All {name}
+      </Link>
     </div>
   );
 }
